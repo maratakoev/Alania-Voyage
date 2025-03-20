@@ -6,11 +6,11 @@
     <slot name="image"></slot>
     <div class="buttons">
       <btn-one 
-      buttonText="Buy Now"
+      buttonText="Узнать больше"
       buttonBgColor="black" 
       />
       <btn-second
-      buttonText="Buy Now"
+      buttonText="Забронировать"
       />
     </div>  
   </div>
