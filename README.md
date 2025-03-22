@@ -9,7 +9,7 @@ Alania Voyage — это современное веб-приложение дл
 Демо
 
 Посмотреть развернутую версию проекта можно по следующей ссылке:
-playful-chimera-c6d504.netlify.app
+[Alania Voyage на Netlify](https://playful-chimera-c6d504.netlify.app)
 
 Технологии
 
