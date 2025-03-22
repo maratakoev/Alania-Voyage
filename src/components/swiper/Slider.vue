@@ -67,7 +67,7 @@
 
 <style scoped>
   .swiper {
-    height: 410px;
+    height: 403px;
     max-width: 1500px;
     /* margin-left: auto;
     margin-right: auto; */
@@ -80,6 +80,8 @@
   }
 
   .swiper__img{
+    height: 370px;
+
     width: 700px;
     filter: brightness(80%) contrast(100%); /* Уменьшаем яркость */
   }

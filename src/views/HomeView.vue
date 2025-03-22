@@ -1,12 +1,10 @@
 <template>
   <div class="home">
-    <Header @update:blurActive="handleBlurChange" ></Header>
-    <div 
-    v-show="isBlurActive" 
-    class="blur-overlay"
-    :class="{ 'fade-in': isBlurActive,'fade-out': !isBlurActive  }"   
+    <NavMenu class="nav"></NavMenu>
 
-    ></div>
+    <!-- <Header :logo="logo" :menuItems="menuItems" @update:blurActive="handleBlurChange" ></Header> -->
+    <!-- <MobileMenu></MobileMenu> -->
+
     <!-- <sub-header></sub-header> -->
     <main-content 
     class="home__container"
@@ -111,37 +109,38 @@
 import { ref } from 'vue';
 import Header from '@/components/header/Header.vue';
 import MainContent from '@/components/main-content/MainContent.vue';
-import SubHeader from '@/components/header/SubHeader.vue';
 import Slider from '@/components/swiper/Slider.vue';
+import MobileMenu from '@/components/header/MobileMenu.vue';
+import NavMenu from '@/components/header/NavMenu.vue';
+
 
 export default {
   name: 'HomeView',
   components: {
-    Header, MainContent, SubHeader, Slider
+    Header, MainContent, Slider, MobileMenu, NavMenu
   },
   setup() {
-    // Создаем переменную для состояния blur
-    const isBlurActive = ref(false);
 
-    // Функция для обновления состояния blur из дочернего компонента
-    const handleBlurChange = (newValue) => {
-      isBlurActive.value = newValue;
-    };
+
+  
 
     return {
-      isBlurActive,
-      handleBlurChange
+
     };
   }
 }
 </script>
 
-<style>
+<style scoped>
 
 
 
 .home__container {
-  margin-top: 70px;
+  /* margin-top: 70px; */
+}
+
+.nav {
+  position: fixed;
 }
 
 .main-content__image {
@@ -155,42 +154,17 @@ export default {
 }
 
 .main-content__image-small {
-  width: 100%; /* Ширина 100% для растягивания на всю ширину контейнера */
-  height: 580px; /* Сохраняем пропорции изображений */
-  margin-bottom: 20px; /* Отступ между изображениями */
-  object-fit: cover; /* Сохраняет пропорции и не обрезает изображение */
-  filter: brightness(70%) contrast(100%); /* Уменьшаем яркость */
+  display: flex;
+  width: 100%;
+  height: 580px;
+  margin-bottom: 20px; 
+  object-fit: cover;
+  filter: brightness(70%) contrast(100%); 
   position: relative;
 
 }
 
-.blur-overlay {
-  z-index: 10; /* Размытие будет под подменю */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.4); /* Полупрозрачный фон */
-  backdrop-filter: blur(0px); /* Размытие фона */
-  opacity: 0; /* Скрыт при изначальном состоянии */
-  transition: backdrop-filter 2s ease 1s, opacity 2s ease 1s; /* увеличили время анимации и добавили задержку */
 
-}
-
-.blur-overlay.fade-in {
-  backdrop-filter: blur(10px); /* Добавляем размытие при активном состоянии */
-  opacity: 1; /* Плавно появляется */
-  transition: backdrop-filter 3s ease, opacity 3s ease; /* Плавная анимация исчезновения */
-
-}
-
-.blur-overlay.fade-out {
-  backdrop-filter: blur(10px); /* Добавляем размытие при активном состоянии */
-  opacity: 0; /* Плавно появляется */
-  transition: backdrop-filter 3s ease, opacity 3s ease; /* Плавная анимация исчезновения */
-
-}
 
 .home__table {
   display: flex;
@@ -198,11 +172,24 @@ export default {
 }
 
 .empty {
-  width: 100%;
+  width: 97%;
   background-color: grey;
   /* height: 500px; */
   padding: 10px;
 }
+
+@media (max-width: 1000px) {
+  .home__table {
+    
+    display: flex;
+    flex-direction: column;
+  }
+  .home__container {
+  margin-top: 0px;
+}
+}
+
+
 </style>
 
 
