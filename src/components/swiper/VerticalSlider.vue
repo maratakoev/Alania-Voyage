@@ -53,12 +53,12 @@ export default {
   setup() {
     // Состояния слайдов, модального окна и контента
     const slides = ref([
-      { img: require('@/assets/sliders/20.png'), title: 'Slide 1', description: 'Description for slide 1' },
-      { img: require('@/assets/sliders/21.png'), title: 'Slide 2', description: 'Description for slide 2' },
-      { img: require('@/assets/sliders/22.png'), title: 'Slide 3', description: 'Description for slide 3' },
-      { img: require('@/assets/sliders/23.png'), title: 'Slide 4', description: 'Description for slide 4' },
-      { img: require('@/assets/sliders/24.png'), title: 'Slide 5', description: 'Description for slide 5' },
-      { img: require('@/assets/sliders/25.png'), title: 'Slide 6', description: 'Description for slide 6' },
+      { img: require('@/assets/sliders/20.png'), title: 'Кольцо Осетии', description: 'Description for slide 1' },
+      { img: require('@/assets/sliders/21.png'), title: 'Кариу хох', description: 'Description for slide 2' },
+      { img: require('@/assets/sliders/22.png'), title: 'Верхний Мизур', description: 'Description for slide 3' },
+      { img: require('@/assets/sliders/23.png'), title: 'Зарамаг и Мамисон', description: 'Description for slide 4' },
+      { img: require('@/assets/sliders/24.png'), title: 'Горная дигория', description: 'Description for slide 5' },
+      { img: require('@/assets/sliders/25.png'), title: 'Уаллаг ком', description: 'Description for slide 6' },
     ]);
     
     const isModalVisible = ref(false);

@@ -1,15 +1,11 @@
 <template>
   <div class="home">
     <NavMenu class="nav"></NavMenu>
-
-    <!-- <Header :logo="logo" :menuItems="menuItems" @update:blurActive="handleBlurChange" ></Header> -->
-    <!-- <MobileMenu></MobileMenu> -->
-
-    <!-- <sub-header></sub-header> -->
     <main-content 
     class="home__container"
     title="Экскурсии"
     sub-title="Оказаться над облаками"
+    :marginTop="130"
     >
       <template #image>
         <img src="/images/14.png" alt="Image 1" class="main-content__image">
@@ -19,6 +15,9 @@
     <main-content 
     title="Проживание"
     sub-title="Лучшие виды из окна"
+    
+    :buttonColor="'#1D68F0'" 
+    
     >
       <template #image>
         <img src="/images/11.png" alt="Image 1" class="main-content__image">
@@ -37,6 +36,10 @@
         <main-content 
       title="Водопад"
       sub-title="Самый высокий в Европе"
+      
+      :buttonFontColor="'black'"
+      :buttonColor="'white'" 
+
       >
         <template #image>
           <img src="/images/9.png" alt="Image 1" class="main-content__image">
@@ -56,6 +59,8 @@
         <main-content 
       title="Панормы"
       sub-title="Которые сложно забыть"
+      :marginTop="350"
+
       >
         <template #image>
           <img src="/images/7.jpg" alt="Image 1" class="main-content__image">
@@ -135,9 +140,7 @@ export default {
 
 
 
-.home__container {
-  /* margin-top: 70px; */
-}
+
 
 .nav {
   position: fixed;
@@ -189,6 +192,19 @@ export default {
 }
 }
 
+
+
+@media (max-width: 900px) {
+  .home__container {
+  margin-top: 60px;
+}
+
+.nav {
+  position: fixed;
+  margin-top: -60px;
+}
+  
+}
 
 </style>
 
