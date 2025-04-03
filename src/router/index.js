@@ -31,7 +31,7 @@ const routes = [
     path: '/tours',
     name: 'tours',
     // Добавление webpackChunkName для галереи
-    component: () => import(/* webpackChunkName: "tours" */ '../views/Tours.vue')
+    component: () => import(/* webpackChunkName: "tours" */ '../views/Living.vue')
   },
 ]
 

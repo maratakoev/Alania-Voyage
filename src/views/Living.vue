@@ -1,10 +1,29 @@
 <template>
-  <div class="routs">
+  <div class="living">
     <NavMenu class="nav" />
     <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
     <Title-image :imageSrc="imageSrc"></Title-image>
     <ContentSubTitle :title="contentSubTitle"></ContentSubTitle>
-    <VerticalSlider ></VerticalSlider>
+    <MainContent 
+      class="home__container"
+      title="Фиагдон"
+      sub-title="Панорманый коттедж"
+      :marginTop="130"
+    >
+      <template #image>
+        <img src="@/assets/titleImages/13.png" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
+    <MainContent 
+      class="home__container"
+      title="Владикавказ"
+      sub-title="Уютная квартира с видом на горы"
+      :marginTop="130"
+    >
+      <template #image>
+        <img src="@/assets/titleImages/12.png" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
     <Discription :articleText="article"></Discription>
   </div>
 </template>
@@ -14,14 +33,14 @@ import NavMenu from '@/components/header/NavMenu.vue';
 import ContentTitle from '@/components/main-content/ContentTitle.vue';
 import TitleImage from '@/components/main-content/TitleImage.vue';
 import ContentSubTitle from '@/components/main-content/ContentSubTitle.vue';
-import VerticalSlider from '@/components/swiper/VerticalSlider.vue';
 import Discription from '@/components/main-content/Discription.vue';
+import MainContent from '@/components/main-content/MainContent.vue';
 
-const contentTitle = 'Экскурсии';
-const contentTitleDiscription = 'Увидеть своими глазами.';
-const contentSubTitle = 'Путеводитель по Осетии';
+const contentTitle = 'Проживание';
+const contentTitleDiscription = 'Сказочные панорамы';
+const contentSubTitle = 'Узнать подробнее';
 
-const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
+const imageSrc = new URL('@/assets/titleImages/11.png', import.meta.url).href;
 
 const article = `
     <h2>Как проходят экскурсии</h2>
@@ -57,11 +76,17 @@ const article = `
 
 
 <style scoped>
-.routs {
+
+
+.living {
   display: flex;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
+}
+
+.main-content {
+  margin-bottom: 20px; 
 }
 
 .nav {

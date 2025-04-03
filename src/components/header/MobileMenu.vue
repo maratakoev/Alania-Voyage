@@ -25,7 +25,8 @@
         :key="index"
         class="mobile-menu__item" 
         :to="item.route"
-        @mouseenter="showSubMenu(index)"
+        @click="handleItemClick"
+
       >
         {{ item.label }}
       </router-link>

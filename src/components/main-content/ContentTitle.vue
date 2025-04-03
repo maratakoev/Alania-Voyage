@@ -63,7 +63,33 @@ const contentSubTitle = 'Увидеть своими глазами.';
   max-width: 300px;
   align-items: baseline;
 
+}
 
+@media (max-width: 768px) {
+  .content-title__subtitle {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .content-title__title {
+    font-size: 79px;
+    
+  }
+  .content-title__subtitle {
+
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+
+}
+
+}
+
+@media (max-width: 390px) {
+  .content-title__title {
+    font-size: 70px;
+  }
 
 }
 

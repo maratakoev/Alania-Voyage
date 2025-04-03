@@ -31,8 +31,8 @@
               class="header__submenu-subtitle" 
               :style="getItemStyle(index)"
             >
-              {{ item }}
-            </li>
+            <router-link :to="item.route">{{ item.label }}</router-link>
+          </li>
           </ul>
         </div>
         <div class="header__submenu-column">
@@ -44,7 +44,7 @@
               class="header__submenu-item" 
               :style="getItemStyle(index)"
             >
-              {{ item }}
+              <router-link :to="item.route">{{ item.label }}</router-link>
             </li>
           </ul>
         </div>
@@ -57,8 +57,8 @@
               class="header__submenu-item" 
               :style="getItemStyle(index)"
             >
-              {{ item }}
-            </li>
+            <router-link :to="item.route">{{ item.label }}</router-link>
+          </li>
           </ul>
         </div>
       </div>
@@ -123,6 +123,16 @@ const getItemStyle = (index) => ({
 </script>
 
 <style>
+.header__submenu-subtitle a,
+.header__submenu-item a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
 .header {
   background-color: rgba(255, 255, 255, 0.75);
   position: relative;

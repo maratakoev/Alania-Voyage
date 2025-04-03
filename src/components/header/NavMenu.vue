@@ -23,13 +23,52 @@ const menuItems = [
   {
     label: 'Экскурсии',
     route: '/routs',
-    submenu: ['Кольцо Осетии', 'Лавочка счастья', 'Кариу хох', 'Верхний Мизур', 'Мамисон', 'Верхний Згид', 'Уаллаг ком', 'Дигория'],
-    additional: ['Обед', 'Встретить рассвет', 'Прогулка на лошадях', 'Йога', 'Кейтринг', 'Параплан', 'Сплав по реке', 'Фотограф', 'Видеограф', 'Аэросъемка'],
-    discription: ['Как проходит экскурсия', 'Групповые туры', 'Праздники в горах'],
+    submenu: [
+      { label: 'Кольцо Осетии', route: '/routs#ring-osetii' },
+      { label: 'Кариу Хох', route: '/routs#kariu-hoh' },
+      { label: 'Верхний Мизур и Мамисон', route: '/routs#mizur-mamison' },
+      { label: 'Кармадон и Даргавс', route: '/routs#karmadon-dargavs' },
+      { label: 'Горная Дигория', route: '/routs#gornaya-digoriya' },
+      { label: 'Уаллаг Ком', route: '/routs#ullag-kom' },
+    ],
+    additional: [
+      { label: 'Обед', route: '/services#lunch' },
+      { label: 'Встретить рассвет', route: '/services#sunrise' },
+      { label: 'Прогулка на лошадях', route: '/services#horses' },
+      { label: 'Йога', route: '/services#yoga' },
+      { label: 'Кейтринг', route: '/services#catering' },
+      { label: 'Параплан', route: '/services#paragliding' },
+      { label: 'Сплав по реке', route: '/services#rafting' },
+      { label: 'Фотограф', route: '/services#photographer' },
+      { label: 'Видеограф', route: '/services#videographer' },
+      { label: 'Аэросъемка', route: '/services#aerial' },
+    ],    
+    discription: [
+      { label: 'Как проходит экскурсия', route: '/info#how-it-works' },
+      { label: 'Групповые туры', route: '/info#group-tours' },
+      { label: 'Праздники в горах', route: '/info#holidays' },
+    ],  
   },
-  { label: 'Проживание', route: '/tours', submenu: ['В горах', 'Во Владикавказе'] },
-  { label: 'Галерея', route: '/galery', submenu: ['Фотографии'] },
-  { label: 'О нас', route: '/about', submenu: ['Соц сети', 'Автопарк'] },
+  { 
+    label: 'Проживание', route: '/tours', 
+    submenu: [
+      { label: 'В горах', route: '/tours#mountains' },
+      { label: 'Во Владикавказе', route: '/tours#vladikavkaz' }
+    ],  
+  },
+  { label: 'Галерея', 
+    route: '/galery', 
+    submenu: [
+      { label: 'Фотографии', route: '/galery#photos' }
+    ], 
+  },
+  { label: 'О нас', 
+    route: '/about', 
+    submenu: [
+        { label: 'Соц сети', route: '/about#social' },
+        { label: 'Автопарк', route: '/about#fleet' }
+    ], 
+  },
 ];
 
   // Создаем переменную для состояния blur
