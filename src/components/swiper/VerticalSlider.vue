@@ -15,11 +15,13 @@
       :short-swipes="false"
       :long-swipes-ratio="0.3"
       class="swiper"
+      
     >
       <swiper-slide
         v-for="(slide, index) in slides"
-        :key="index"
+        :key="slide.id"
         class="swiper__slide"
+        :id="slide.id"
         @click="openModal(slide)"
       >
         <div class="swiper__content">
@@ -53,7 +55,9 @@ import 'swiper/css/effect-fade';
 import ModalSlide from './ModalSlide.vue';
 
 const slides = ref([
-  { img: new URL('@/assets/sliders/20.png', 
+  { 
+    id:'ring-osetii',
+    img: new URL('@/assets/sliders/20.png', 
   import.meta.url).href, title: 'Кольцо Осетии', 
   description: `Маршрут «В сердце Осетии: от Кармадона до водопадов Мидаграбина»
 
@@ -84,7 +88,9 @@ const slides = ref([
 
 Этот маршрут станет незабываемым путешествием в сердце Осетии, соединяя в себе историю, природу и дух Кавказа.`, 
 },
-  { img: new URL('@/assets/sliders/21.png', import.meta.url).href, 
+  { 
+    id: 'kariy-xox',
+    img: new URL('@/assets/sliders/21.png', import.meta.url).href, 
   title: 'Кариу хох', 
   
   description: `Маршрут "Вершина Кариу-Хох: между небом и землёй"
@@ -119,7 +125,9 @@ const slides = ref([
 • Обязательно зарядите фотоаппарат - виды потрясающие!`,
 
   },
-  { img: new URL('@/assets/sliders/22.png', 
+  { 
+    id: 'mizur-mamison',
+    img: new URL('@/assets/sliders/22.png', 
   import.meta.url).href, title: 'Верхний Мизур и Мамисон', 
   description: `Маршрут "От Уастырджи к горным вершинам Зарамага"
 
@@ -156,7 +164,9 @@ const slides = ref([
 • Лучшее время: июнь-сентябрь
 
 "Этот маршрут - как восхождение от древних традиций к современным горным курортам, где природа открывает свои самые сокровенные виды."`},
-  { img: new URL('@/assets/sliders/23.png', import.meta.url).href, 
+  { 
+    id: 'karmadon-dargavs',
+    img: new URL('@/assets/sliders/23.png', import.meta.url).href, 
   title: 'Кармадон и Даргавс', 
   description: `Контрастный маршрут по следам ледника и древних цивилизаций
 
@@ -202,7 +212,9 @@ const slides = ref([
 - Кроссовки с хорошим протектором
 - Готовность удивляться - гарантирована! 
 - Настроение исследователя - обязательно!` },
-  { img: new URL('@/assets/sliders/24.png', import.meta.url).href, 
+  { 
+    id: 'digoria',
+    img: new URL('@/assets/sliders/24.png', import.meta.url).href, 
   title: 'Горная дигория', 
   description: `**Путешествие в сердце Горной Дигории**  
 
@@ -251,7 +263,9 @@ const slides = ref([
 - Готовность к **удивительным открытиям**  
 
 Это будет день, наполненный историей, природой и вдохновением! 🚀` },
-  { img: new URL('@/assets/sliders/25.png', import.meta.url).href, 
+  { 
+    id: 'yallag-kom',
+    img: new URL('@/assets/sliders/25.png', import.meta.url).href, 
   title: 'Уаллаг ком', 
   description: `**Путешествие сквозь века: от пророчества до вершин**  
 

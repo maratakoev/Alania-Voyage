@@ -1,15 +1,22 @@
 <template>
   <div class="nav-menu">
-    <MobileMenu :logo="logo_dark" :menuItems="menuItems"  @update:blurActive="handleBlurChange"   class="mobile-menu"></MobileMenu>
-    <Header :logo="logo" :menuItems="menuItems" @update:blurActive="handleBlurChange"  class="web-menu"></Header>
-    <div 
-    v-show="isBlurActive" 
-    class="blur-overlay"
-    :class="{ 'fade-in': isBlurActive,'fade-out': !isBlurActive  }"   
+    <!-- Мобильное меню, которое будет отображаться только на маленьких экранах -->
+    <MobileMenu :logo="logo_dark" :menuItems="menuItems" @update:blurActive="handleBlurChange" class="mobile-menu" />
 
+    <!-- Обычное меню, которое будет отображаться только на больших экранах -->
+    <Header :logo="logo" :menuItems="menuItems" @update:blurActive="handleBlurChange" class="web-menu" />
+
+    <!-- Размытие фона при активном состоянии -->
+    <div 
+      v-show="isBlurActive" 
+      class="blur-overlay"
+      :class="{ 'fade-in': isBlurActive, 'fade-out': !isBlurActive }"
     ></div>
+
+
   </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue';
@@ -25,14 +32,14 @@ const menuItems = [
     route: '/routs',
     submenu: [
       { label: 'Кольцо Осетии', route: '/routs#ring-osetii' },
-      { label: 'Кариу Хох', route: '/routs#kariu-hoh' },
+      { label: 'Кариу Хох', route: '/routs#kariy-xox' },
       { label: 'Верхний Мизур и Мамисон', route: '/routs#mizur-mamison' },
       { label: 'Кармадон и Даргавс', route: '/routs#karmadon-dargavs' },
-      { label: 'Горная Дигория', route: '/routs#gornaya-digoriya' },
-      { label: 'Уаллаг Ком', route: '/routs#ullag-kom' },
+      { label: 'Горная Дигория', route: '/routs#digoria' },
+      { label: 'Уаллаг Ком', route: '/routs#yallag-kom' },
     ],
     additional: [
-      { label: 'Обед', route: '/services#lunch' },
+      { label: 'Обед', route: '/services#trump' },
       { label: 'Встретить рассвет', route: '/services#sunrise' },
       { label: 'Прогулка на лошадях', route: '/services#horses' },
       { label: 'Йога', route: '/services#yoga' },
