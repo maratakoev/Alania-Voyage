@@ -57,10 +57,10 @@ const menuItems = [
     ],  
   },
   { 
-    label: 'Проживание', route: '/tours', 
+    label: 'Проживание', route: '/living', 
     submenu: [
-      { label: 'В горах', route: '/tours#mountains' },
-      { label: 'Во Владикавказе', route: '/tours#vladikavkaz' }
+      { label: 'В горах', route: '/living#mountains' },
+      { label: 'Во Владикавказе', route: '/living#vladikavkaz' }
     ],  
   },
   { label: 'Галерея', 

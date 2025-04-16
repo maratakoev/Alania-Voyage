@@ -5,6 +5,76 @@
     <Title-image :imageSrc="imageSrc"></Title-image>
     <ContentSubTitle :title="contentSubTitle"></ContentSubTitle>
     <VerticalSlider ></VerticalSlider>
+    <MainContent      
+      title="Рассвет"
+      sub-title="Встретить рассвет над облаками"
+      :marginTop="130"
+    >
+      <template #image>
+        <img src="/images/14.png" alt="Image 1" class="main-content__image">
+      </template>
+      
+    </MainContent>
+    <div class="home__table">
+      <MainContent 
+        title="Обед"
+        sub-title="Обедать можно по разному"
+        :buttonFontColor="'black'"
+        :buttonColor="'white'"
+      >
+        <template #image>
+          <img src="/images/9.png" alt="Image 1" class="main-content__image">
+        </template>
+      </MainContent>
+      <MainContent 
+        title="Лошади"
+        sub-title="Прогулка на лошадях"
+      >
+        <template #image>
+          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
+        </template>
+      </MainContent> 
+    </div>
+    <div class="home__table">
+      <MainContent 
+        title="Параплан"
+        sub-title="Почувствуй свободу"
+        :buttonFontColor="'black'"
+        :buttonColor="'white'"
+      >
+        <template #image>
+          <img src="/images/9.png" alt="Image 1" class="main-content__image">
+        </template>
+      </MainContent>
+      <MainContent 
+        title="Сплав"
+        sub-title="По горной реке на каяках"
+      >
+        <template #image>
+          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
+        </template>
+      </MainContent> 
+    </div>
+    <div class="home__table">
+      <MainContent 
+        title="Групповые туры"
+        sub-title="Как проходят групповые экскурсии"
+        :buttonFontColor="'black'"
+        :buttonColor="'white'"
+      >
+        <template #image>
+          <img src="/images/9.png" alt="Image 1" class="main-content__image">
+        </template>
+      </MainContent>
+      <MainContent 
+        title="Праздники"
+        sub-title="На высоте на едине"
+      >
+        <template #image>
+          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
+        </template>
+      </MainContent> 
+    </div>
     <Discription :articleText="article"></Discription>
   </div>
 </template>
@@ -16,6 +86,7 @@ import TitleImage from '@/components/main-content/TitleImage.vue';
 import ContentSubTitle from '@/components/main-content/ContentSubTitle.vue';
 import VerticalSlider from '@/components/swiper/VerticalSlider.vue';
 import Discription from '@/components/main-content/Discription.vue';
+import MainContent from '@/components/main-content/MainContent.vue';
 
 const contentTitle = 'Экскурсии';
 const contentTitleDiscription = 'Увидеть своими глазами.';
@@ -53,6 +124,7 @@ const article = `
     <h3>Безопасность</h3> 
     <p> Важно помнить, что безопасность во время экскурсии обеспечивается только в пределах автомобиля. Вне автомобиля мы не можем гарантировать вашу безопасность. Пожалуйста, будьте осторожны, не подходите близко к обрывам, берегам бурных рек и другим потенциально опасным зонам. </p> 
     <p> Мы настоятельно рекомендуем соблюдать осторожность в таких местах и следовать указаниям гида для вашего собственного комфорта и безопасности. </p>`;
+    
 </script>
 
 
@@ -72,11 +144,32 @@ position: absolute;
   padding-top: 70px;
 }
 
+.main-content__image {
+  width: 100%;
+  height: 580px;
+  object-fit: cover;
+  filter: brightness(70%) contrast(100%);
+}
+
+.main-content__image-small {
+  width: 100%;
+  height: 580px;
+  object-fit: cover;
+  filter: brightness(70%) contrast(100%);
+}
+
+.home__table {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
 
 @media (max-width: 1000px) {
-  /* .content-title {
-    display: none;
-  } */
+  .home__table {
+    flex-direction: column;
+  }
 }
 
 </style>

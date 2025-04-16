@@ -2,10 +2,11 @@
   <div class="home">
     <NavMenu class="nav" />
     <MainContent 
-      class="home__container"
       title="Экскурсии"
       sub-title="Оказаться над облаками"
       :marginTop="130"
+      :modalData="modalData[0]"
+
     >
       <template #image>
         <img src="/images/14.png" alt="Image 1" class="main-content__image">
@@ -16,6 +17,8 @@
       title="Проживание"
       sub-title="Лучшие виды из окна"
       :buttonColor="'#1D68F0'"
+      :modalData="modalData[1]"
+
     >
       <template #image>
         <img src="/images/11.png" alt="Image 1" class="main-content__image">
@@ -107,6 +110,71 @@ const article = ref(`
   </ul>
   <p>Подробности маршрутов, условий проживания и актуальной информации уточняйте перед бронированием. Бронирование экскурсии означает согласие с указанными условиями.</p>
 `);
+
+const modalData = ref([
+  {
+    title: 'Узнать больше о экскурсиях',
+    content: `
+      <p><strong>Организуем экскурсии</strong> для групп <strong>от 1 до 50 человек</strong> — выезд в любое удобное для вас время.</p>
+
+      <p style="margin-top: 1em;"><strong>Внедорожные туры</strong> — <em>на мощных 4x4 автомобилях</em> мы с комфортом проедем по живописным маршрутам, которые недоступны обычному транспорту.</p>
+
+      <p>Вы увидите <strong>водопады — самые высокие в Европе</strong>, подниметесь на <strong>горные вершины высотой более 2000 метров</strong>, и буквально <em>окажетесь над облаками</em>.</p>
+
+      <p>По пути — <strong>захватывающие панорамы</strong>, остановки в красивейших локациях для <strong>крутых фото</strong> и возможность отдохнуть на природе.</p>
+
+      <p style="margin-top: 1em;">Также доступны <strong>автобусные и пешие экскурсии</strong> — выбирайте формат, который подходит именно вам!</p>
+    `,
+    button1Text: 'Перейти в раздел',
+    // button2Text: 'Закрыть',
+    // button1BgColor: '#4CAF50',
+    // button2BgColor: '#f44336',
+    // button1FontColor: '#fff',
+    // button2FontColor: '#fff',
+  },
+  {
+    title: 'Экскурсия по горным вершинам',
+    content: `
+      <p>Наши экскурсии проходят по самым красивым горным маршрутам, где вы сможете насладиться потрясающими видами.</p>
+      <p>По пути мы посетим самые высокие точки и сделаем остановки для фотосессий.</p>
+    `,
+    button1Text: 'Забронировать',
+    button2Text: 'Закрыть',
+    button1BgColor: '#4CAF50',
+    button2BgColor: '#f44336',
+    button1FontColor: '#fff',
+    button2FontColor: '#fff',
+  },
+  {
+    title: 'Проживание с видом на озеро',
+    content: `
+      <p>Мы предлагаем уютные номера с видом на живописное озеро, где вы сможете отдохнуть и насладиться природой.</p>
+      <p>В отеле есть все удобства для комфортного проживания.</p>
+    `,
+    button1Text: 'Бронировать номер',
+    button2Text: 'Закрыть',
+    button1BgColor: '#1D68F0',
+    button2BgColor: '#f44336',
+    button1FontColor: '#fff',
+    button2FontColor: '#fff',
+  },
+  {
+    title: 'Эксплорация водопадов',
+    content: `
+      <p>Уникальная экскурсия по водопадам, которые считаются самыми высокими в Европе.</p>
+      <p>Вы получите незабываемые впечатления от походов по горным тропам и впечатляющих водопадов.</p>
+    `,
+    button1Text: 'Забронировать тур',
+    button2Text: 'Закрыть',
+    button1BgColor: '#FF9800',
+    button2BgColor: '#f44336',
+    button1FontColor: '#fff',
+    button2FontColor: '#fff',
+  },
+  // Добавляйте другие объекты с данными для других модалок по мере необходимости.
+]);
+
+
 </script>
 
 <style scoped>

@@ -5,6 +5,7 @@
     <Title-image :imageSrc="imageSrc"></Title-image>
     <ContentSubTitle :title="contentSubTitle"></ContentSubTitle>
     <MainContent 
+      id="mountains"
       class="home__container"
       title="Фиагдон"
       sub-title="Панорманый коттедж"
@@ -15,6 +16,7 @@
       </template>
     </MainContent>
     <MainContent 
+      id="vladikavkaz"
       class="home__container"
       title="Владикавказ"
       sub-title="Уютная квартира с видом на горы"
