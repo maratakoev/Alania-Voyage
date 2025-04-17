@@ -36,8 +36,8 @@
 
     <div class="home__table">
       <MainContent 
-        title="Водопад"
-        sub-title="Самый высокий в Европе"
+        title="Откройте магию Северной Осетии"
+        sub-title="Экскурсии, проживание и незабываемые впечатления"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
       >
@@ -79,6 +79,11 @@
       <Slider />
     </div>
 
+    <ReviewForm/>
+    <HotOffers></HotOffers>
+    <InteractiveMap></InteractiveMap>
+    <UniqueSelling></UniqueSelling>
+
     <Discription :articleText="article" />
     <PreFooter />
   </div>
@@ -91,6 +96,10 @@ import Slider from '@/components/swiper/Slider.vue';
 import NavMenu from '@/components/header/NavMenu.vue';
 // import PreFooter from '@/components/main-content/PreFooter.vue';
 import Discription from '@/components/main-content/Discription.vue';
+import ReviewForm from '@/components/Review-form.vue';
+import HotOffers from '@/components/main-content/HotOffers.vue';
+import InteractiveMap from '@/components/main-content/InteractiveMap.vue';
+import UniqueSelling from '@/components/main-content/UniqueSelling.vue';
 
 const article = ref(`
   <h2>Условия предоставления туристических услуг</h2>

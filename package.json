@@ -9,10 +9,12 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "firebase": "^11.4.0",
-    "pinia": "^3.0.1",
+    "pinia": "^3.0.2",
     "swiper": "^11.2.6",
     "vue": "^3.2.13",
+    "vue-rate-it": "^2.1.0",
     "vue-router": "^4.0.3",
+    "vue3-star-ratings": "^3.0.5",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
