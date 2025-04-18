@@ -1,8 +1,8 @@
 <template>
   <section class="map-section">
     <div class="map-header">
-      <h2 class="section-title">Выберите точку маршрута</h2>
-      <div class="map-filters">
+      <h2 class="section-title">Основные ущелья на Яндекс картах</h2>
+      <!-- <div class="map-filters">
         <button 
           v-for="filter in filters"
           :key="filter.type"
@@ -12,24 +12,40 @@
           <img :src="filter.icon" :alt="filter.label">
           {{ filter.label }}
         </button>
-      </div>
+      </div> -->
     </div>
 
     <div id="yandex-map" ref="mapContainer"></div>
 
+    <div v-if="!selectedLocation" class="placeholder-info">
+      <p>Выберите точку на карте, чтобы увидеть подробную информацию</p>
+    </div>
+
     <transition name="fade">
-      <div v-if="selectedLocation" class="location-card">
-        <img :src="selectedLocation.preview" class="location-image">
-        <div class="location-info">
+      <div v-if="selectedLocation" class="location-info-container">
+        <div class="location-image-wrapper">
+          <img :src="selectedLocation.preview" :alt="selectedLocation.name" class="location-image">
+        </div>
+        <div class="location-details">
           <h3>{{ selectedLocation.name }}</h3>
-          <p class="location-desc">{{ selectedLocation.description }}</p>
-          <div class="location-tours">
+          <p class="location-description">{{ selectedLocation.description }}</p>
+          
+          <div v-if="filteredTours.length > 0" class="tours-list">
             <div v-for="tour in filteredTours" :key="tour.id" class="tour-item">
-              <span class="tour-name">{{ tour.name }}</span>
-              <span class="tour-price">{{ tour.price }} ₽</span>
-              <button @click="openBooking(tour)">Выбрать</button>
+              <div class="tour-info">
+                <span class="tour-name">{{ tour.name }}</span>
+                <span class="tour-duration">{{ tour.duration }}</span>
+              </div>
+              <div class="tour-price-block">
+                <span class="tour-price">{{ tour.price }} ₽</span>
+                <button @click="openBooking(tour)" class="book-button">Выбрать</button>
+              </div>
             </div>
           </div>
+          
+          <button @click="scrollToMap" class="back-to-map">
+            ← Вернуться к карте
+          </button>
         </div>
       </div>
     </transition>
@@ -37,139 +53,178 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-// Данные для карты
+// Данные для карты (ваши оригинальные точки)
 const locations = ref([
   {
     id: 1,
-    name: "Цейское ущелье",
-    coords: [42.760, 43.890],
-    type: "trekking",
-    preview: "/images/locations/cey.jpg",
-    description: "Живописное ущелье с ледниками и водопадами"
+    name: "Дарьяльское ущелье",
+    coords: [42.841280, 44.631520],
+    type: "village",
+    preview: "/images/locations/Darial.png",
+    description: " 24км от Владикавказа, Ворота в Закавказье"
   },
   {
     id: 2,
-    name: "Даргавс",
-    coords: [42.840, 44.420],
-    type: "history",
-    preview: "/images/locations/dargavs.jpg",
-    description: "Древний город мёртвых с каменными склепами"
+    name: "Кармадон",
+    coords: [42.862970, 44.518812],
+    type: "village",
+    preview: "/images/locations/Karmadon.png",
+    description: "30км от Владикавказа, В этом ущелье, после схода ледника Колка, пропала группа Сергея Бодрова"
   },
   {
     id: 3,
-    name: "Кармадон",
-    coords: [42.950, 44.500],
-    type: "nature",
-    preview: "/images/locations/karmadon.jpg",
-    description: "Горное ущелье с живописными видами"
+    name: "Даргавс",
+    coords: [42.834115, 44.431108],
+    type: "village",
+    preview: "/images/locations/Dargavs.png",
+    description: "44 км от Владикавказа, Древний город мёртвых с каменными склепами"
   },
   {
     id: 4,
-    name: "Джимара",
-    coords: [42.720, 44.250],
-    type: "trekking",
-    preview: "/images/locations/dzhimara.jpg",
-    description: "Горный массив с альпийскими лугами"
+    name: "Фиагдон",
+    coords: [42.859167, 44.312383],
+    type: "village",
+    preview: "/images/locations/Fiagdon.png",
+    description: "48км от Владикавказа, Самый крупный горный поселок Осетии"
   },
   {
     id: 5,
-    name: "Фиагдон",
-    coords: [42.830, 44.230],
+    name: "Мидагарабинские водопады",
+    coords: [42.769626, 44.363269],
     type: "village",
-    preview: "/images/locations/fiagdon.jpg",
-    description: "Живописное горное селение"
+    preview: "/images/locations/Midag.png",
+    description: "70 км от Владикавказа, Самый высокий водопад в Европе"
   },
   {
     id: 6,
-    name: "Мамисон",
-    coords: [42.710, 43.750],
-    type: "ski",
-    preview: "/images/locations/mamison.jpg",
-    description: "Горнолыжный курорт и перевал"
+    name: "Алагирское ущелье",
+    coords: [42.875341, 44.152894],
+    type: "village",
+    preview: "/images/locations/Alagir.png",
+    description: "60 км от Владикавказа, Живописное ущелье идиально для фототуров"
   },
   {
     id: 7,
-    name: "Верхний Мизур",
-    coords: [42.780, 43.950],
+    name: "Мамисонское ущелье",
+    coords: [42.666777, 43.853172],
     type: "village",
-    preview: "/images/locations/mizur.jpg",
-    description: "Высокогорное село с древними башнями"
+    preview: "/images/locations/Mamison.png",
+    description: "100км от Владиквказа, Горнолыжный курорт"
   },
   {
     id: 8,
-    name: "Дзинага",
-    coords: [42.850, 43.850],
-    type: "culture",
-    preview: "/images/locations/dzinaga.jpg",
-    description: "Историческое осетинское село"
+    name: "Высокогорный Уаллагком",
+    coords: [42.907886, 43.853208],
+    type: "village",
+    preview: "/images/locations/Zgid.png",
+    description: "116км от Владикавказа, Высокогорное село с руинами XIV в"
   },
   {
     id: 9,
-    name: "Беслан",
-    coords: [43.193, 44.541],
-    type: "history",
-    preview: "/images/locations/beslan.jpg",
-    description: "Город с богатой историей и мемориальным комплексом"
+    name: "Горная Дигория",
+    coords: [42.910014, 43.554438],
+    type: "village",
+    preview: "/images/locations/vodopad.png",
+    description: " 128км от Владиккавказа, Самое живописное место по мнению большинства местных жителей"
   },
   {
     id: 10,
+    name: "Беслан",
+    coords: [43.193, 44.541],
+    type: "history",
+    preview: "/images/locations/Beslan.png",
+    description: " 30 км от Владикавказа, печально известный Беслан"
+  },
+  {
+    id: 11,
     name: "Владикавказ",
     coords: [43.024, 44.681],
     type: "culture",
-    preview: "/images/locations/vladikavkaz.jpg",
+    preview: "/images/locations/Vld.png",
     description: "Столица Республики Северная Осетия - Алания"
-  }
+  },
 ]);
 
 const tours = ref([
   {
     id: 101,
     locationId: 1,
-    name: "Треккинг к ледникам",
+    name: "Входит в маршрут Кольцо Осетии",
     type: "trekking",
-    price: 6000,
-    duration: "8 часов"
+    price: 14000,
+    duration: "5 часов"
   },
   {
     id: 102,
     locationId: 2,
-    name: "Экскурсия в Даргавс",
+    name: "Входит в маршрут Кольцо Осетии",
     type: "history",
-    price: 4500,
+    price: 14000,
     duration: "5 часов"
   },
   {
     id: 103,
     locationId: 3,
-    name: "Экскурсия по Кармадону",
+    name: "Входит в маршрут Кольцо Осетии",
     type: "nature",
-    price: 5000,
-    duration: "6 часов"
+    price: 14000,
+    duration: "5 часов"
   },
   {
     id: 104,
     locationId: 4,
-    name: "Треккинг в Джимаре",
-    type: "trekking",
-    price: 7000,
-    duration: "10 часов"
+    name: "Входит в маршрут Кольцо Осетии",
+    type: "history",
+    price: 14000,
+    duration: "5 часов"
   },
   {
     id: 105,
-    locationId: 9,
-    name: "Экскурсия по Беслану",
+    locationId: 5,
+    name: "Кольцо Осетии + Мидаграбин",
+    type: "trekking",
+    price: 15000,
+    duration: "10 часов"
+  },
+  {
+    id: 106,
+    locationId: 6,
+    name: "Алагирское ущелье",
     type: "history",
-    price: 3500,
-    duration: "4 часа"
+    price: 14000,
+    duration: "5 часов"
+  },
+  {
+    id: 107,
+    locationId: 7,
+    name: "Мамисонское ущелье",
+    type: "history",
+    price: 15000,
+    duration: "6 часов"
+  },
+  {
+    id: 108,
+    locationId: 8,
+    name: "Уаллагком",
+    type: "history",
+    price: 16000,
+    duration: "7 часов"
+  },
+  {
+    id: 109,
+    locationId: 9,
+    name: "Горная Дигория",
+    type: "history",
+    price: 18000,
+    duration: "12 часов"
   }
 ]);
 
-// Фильтрация
 const filters = ref([
   { type: "all", label: "Все", icon: "/icons/map/all.svg" },
   { type: "trekking", label: "Трекинг", icon: "/icons/map/trekking.svg" },
@@ -193,104 +248,86 @@ const filteredTours = computed(() => {
   );
 });
 
-// Инициализация карты
 const initMap = () => {
   ymaps.ready(() => {
     ymap = new ymaps.Map(mapContainer.value, {
-      center: [42.92, 43.95],
+      center: [42.921544, 44.3203],
       zoom: 8,
-      controls: ["zoomControl"],
-    }, {
-      minZoom: 8,
+      type: 'yandex#hybrid',
+      controls: ['zoomControl', 'typeSelector', 'fullscreenControl'],
+      behaviors: ['drag', 'scrollZoom', 'dblClickZoom', 'multiTouch'],
+
+      minZoom: 7,  // Минимальный уровень приближения
       maxZoom: 12,
       restrictMapArea: [
-        [42.1, 43.5],
-        [43.8, 44.8]
+        [42.1, 43.5], // Юго-западная граница (мин. широта, мин. долгота)
+        [43.8, 44.8]  // Северо-восточная граница (макс. широта, макс. долгота)
       ]
     });
 
-    // Создаем кастомный макет маркера
-    const markerLayout = ymaps.templateLayoutFactory.createClass(
-      `<div class="custom-marker">
-        <div class="marker-icon" style="background-color: {{ properties.iconColor }}; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-          <img src="{{ properties.icon }}" width="24" height="24">
-        </div>
-        <div class="marker-text">{{ properties.hintContent }}</div>
-      </div>`
-    );
-
-    // Добавляем маркеры для всех локаций кроме Владикавказа (id:10)
-    locations.value.filter(loc => loc.id !== 10).forEach(loc => {
+    // Добавляем ВСЕ ваши маркеры (10 точек)
+    locations.value.forEach(loc => {
       const marker = new ymaps.Placemark(
         loc.coords,
         {
           hintContent: loc.name,
-          balloonContent: `
-            <div class="balloon-content">
-              <img src="${loc.preview}" alt="${loc.name}" style="width:100%;height:150px;object-fit:cover;border-radius:8px 8px 0 0;">
-              <h3 style="margin:12px 0 8px;font-size:18px;">${loc.name}</h3>
-              <p style="margin:0 0 12px;color:#666;font-size:14px;">${loc.description}</p>
-              <button 
-                onclick="window.dispatchEvent(new CustomEvent('select-location', { detail: ${loc.id} }))"
-                style="background:#1D68F0;color:white;border:none;padding:10px 16px;border-radius:6px;cursor:pointer;width:100%;font-size:14px;"
-              >
-                Выбрать тур
-              </button>
-            </div>
-          `,
-          icon: getIconByType(loc.type),
-          iconColor: getColorByType(loc.type)
+          balloonContent: "" // Отключаем балун
         },
         {
-          iconLayout: markerLayout,
-          iconShape: {
-            type: 'Circle',
-            coordinates: [0, 0],
-            radius: 20
-          },
-          balloonOffset: [0, -20],
-          hideIconOnBalloonOpen: false,
-          openBalloonOnClick: true
+          preset: getPresetByType(loc.type),
+          balloonCloseButton: false,
+          hideIconOnBalloonOpen: false
         }
       );
 
       marker.events.add('click', () => {
         selectedLocation.value = loc;
+        // Плавный скролл к информации
+        setTimeout(() => {
+          document.querySelector('.location-info-container')?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest'
+          });
+        }, 100);
       });
 
       ymap.geoObjects.add(marker);
     });
-
-    // Обработчик выбора локации из балуна
-    window.addEventListener('select-location', (e) => {
-      selectedLocation.value = locations.value.find(l => l.id === e.detail);
-    });
   });
 };
 
-// Вспомогательные функции
-const getColorByType = (type) => {
-  const colors = { 
-    trekking: "#4CAF50",
-    history: "#FF9800",
-    nature: "#8BC34A",
-    village: "#9C27B0",
-    culture: "#3F51B5",
-    ski: "#00BCD4"
+const getPresetByType = (type) => {
+  const presets = {
+    trekking: {
+      preset: 'islands#greenHikingIcon',
+      iconShape: { type: 'Circle', coordinates: [0,0], radius: 16 } // Круг
+    },
+    history: {
+      preset:  'islands#redHistoricIcon'      ,
+      iconColor: '#757575', 
+      iconShape: { type: 'Rectangle', coordinates: [[-12,-12],[12,12]] } // Квадрат
+    },
+    nature: {
+      preset: 'islands#blueEnvironmentIcon',
+      iconShape: { type: 'Circle', coordinates: [0,0], radius: 16 } // Круг
+    },
+    village: {
+      preset: 'islands#mountainIcon'   ,
+      iconShape: { type: 'Diamond', coordinates: [[0,-12],[12,0],[0,12],[-12,0]] } // Ромб
+    },
+    culture: {
+      preset: 'islands#darkBlueTheaterIcon',
+      iconShape: { type: 'Circle', coordinates: [0,0], radius: 16 } // Круг
+    },
+    ski: {
+      preset: 'islands#blueSkiingIcon',
+      iconShape: { type: 'Rectangle', coordinates: [[-10,-16],[10,16]] } // Прямоугольник
+    }
   };
-  return colors[type] || "#1D68F0";
-};
-
-const getIconByType = (type) => {
-  const icons = {
-    trekking: "/icons/map/trekking.svg",
-    history: "/icons/map/history.svg",
-    nature: "/icons/map/nature.svg",
-    village: "/icons/map/village.svg",
-    culture: "/icons/map/culture.svg",
-    ski: "/icons/map/ski.svg"
+  return presets[type] || { 
+    preset: 'islands#blueIcon',
+    iconShape: { type: 'Circle', coordinates: [0,0], radius: 16 }
   };
-  return icons[type] || "/icons/map/default.svg";
 };
 
 const setActiveFilter = (type) => {
@@ -309,20 +346,33 @@ const openBooking = (tour) => {
   });
 };
 
-// Инициализация компонента
+const scrollToMap = () => {
+  document.querySelector('#yandex-map')?.scrollIntoView({ 
+    behavior: 'smooth',
+    block: 'start'
+  });
+};
+
 onMounted(() => {
   if (window.ymaps) {
     initMap();
   } else {
     const script = document.createElement('script');
-    script.src = 'https://api-maps.yandex.ru/2.1/?apikey=fb6d6707-7701-4f51-b637-26b940b2c995&lang=ru_RU';
+    script.src = 'https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_KEY&lang=ru_RU';
     script.onload = initMap;
     document.head.appendChild(script);
+  }
+});
+
+onUnmounted(() => {
+  if (ymap) {
+    ymap.destroy();
   }
 });
 </script>
 
 <style scoped>
+/* Все ваши оригинальные стили */
 .map-section {
   padding: 40px 0;
   background: #f5f7fa;
@@ -342,6 +392,7 @@ onMounted(() => {
 .section-title {
   font-size: 28px;
   color: #1a1a1a;
+  margin: 0;
 }
 
 .map-filters {
@@ -379,118 +430,140 @@ onMounted(() => {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.location-card {
+.placeholder-info {
   max-width: 1200px;
-  margin: 20px auto 0;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
   background: white;
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.placeholder-info p {
+  color: #666;
+  font-size: 18px;
+  margin: 0;
+}
+
+.location-info-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 12px;
+  /* overflow: hidden; */
+  max-height: 300px; /* Фиксированная высота */
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   display: flex;
+}
+
+.location-image-wrapper {
+  width: 40%;
 }
 
 .location-image {
-  width: 300px;
-  height: 250px;
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
   object-fit: cover;
 }
 
-.location-info {
-  padding: 20px;
-  flex-grow: 1;
+.location-details {
+  width: 60%;
+  padding: 17px;
 }
 
-.location-desc {
+.location-details h3 {
+  font-size: 24px;
+  margin: 0 0 10px;
+  color: #1a1a1a;
+}
+
+.location-description {
   color: #666;
-  margin: 10px 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.location-tours {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.tours-list {
+  margin: 25px 0;
 }
 
 .tour-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
-  background: #f9f9f9;
-  border-radius: 8px;
+  /* padding: 15px 0; */
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tour-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .tour-name {
   font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.tour-duration {
+  font-size: 14px;
+  color: #888;
 }
 
 .tour-price {
   font-weight: bold;
   color: #1D68F0;
+  font-size: 18px;
 }
 
-.tour-item button {
-  padding: 6px 12px;
+.book-button {
+  padding: 8px 16px;
   background: #1D68F0;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  margin-left: 10px;
+
+}
+
+.book-button:hover {
+  background: #1557c0;
+}
+
+.back-to-map {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.back-to-map:hover {
+  background: #f5f5f5;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}
-
-/* Стили для кастомных маркеров */
-.custom-marker {
-  position: relative;
-  cursor: pointer;
-}
-
-.marker-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.marker-text {
-  position: absolute;
-  left: 50px;
-  top: 5px;
-  background: white;
-  padding: 2px 10px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 14px;
-  white-space: nowrap;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-/* Стили для балунов */
-:deep(.ymaps-2-1-79-balloon__content) {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-:deep(.ymaps-2-1-79-balloon__tail) {
-  display: none !important;
-}
-
-:deep(.ymaps-2-1-79-balloon__layout) {
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  transform: translateY(20px);
 }
 
 @media (max-width: 768px) {
@@ -503,18 +576,21 @@ onMounted(() => {
     height: 400px;
   }
   
-  .location-card {
+  .location-info-container {
     flex-direction: column;
   }
   
-  .location-image {
+  .location-image-wrapper,
+  .location-details {
     width: 100%;
-    height: 200px;
   }
   
-  .marker-text {
-    font-size: 12px;
-    left: 45px;
+  .location-image {
+    max-height: 250px;
+  }
+  
+  .location-details {
+    padding: 20px;
   }
 }
 </style>

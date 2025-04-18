@@ -20,17 +20,17 @@ const uspItems = ref([
   {
     title: "Гиды-осетины",
     description: "Знают каждый камень в горах",
-    icon: "/icons/guide.svg"
+    icon: "images/icons/person.svg"
   },
   {
     title: "Безопасность",
     description: "Подготовленные внедорожники",
-    icon: "/icons/shield.svg"
+    icon: "images/icons/safety.svg"
   },
   {
     title: "Гарантия цены",
     description: "Дешевле чем на сайтах-агрегаторах",
-    icon: "/icons/price-tag.svg"
+    icon: "images/icons/price.svg"
   }
 ]);
 </script>

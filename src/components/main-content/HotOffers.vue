@@ -29,7 +29,7 @@ const offers = ref([
     discount: 25,
     oldPrice: "12 000",
     price: "9 000",
-    image: "/images/hot-tour-1.jpg"
+    image: "/images/locations/Alagir.png"
   },
   {
     title: "Гостевой дом у водопада",
@@ -37,7 +37,7 @@ const offers = ref([
     discount: 15,
     oldPrice: "35 000",
     price: "29 750",
-    image: "/images/hot-tour-2.jpg"
+    image: "/images/locations/Dargavs.png"
   }
 ]);
 
