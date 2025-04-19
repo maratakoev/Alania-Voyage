@@ -54,7 +54,7 @@
         </template>
       </MainContent> 
     </div>
-
+<Trust></Trust>
     <div class="home__table">
       <MainContent 
         title="Панорамы"
@@ -100,6 +100,7 @@ import ReviewForm from '@/components/Review-form.vue';
 import HotOffers from '@/components/main-content/HotOffers.vue';
 import InteractiveMap from '@/components/main-content/InteractiveMap.vue';
 import UniqueSelling from '@/components/main-content/UniqueSelling.vue';
+import Trust from '@/components/main-content/Trust.vue';
 
 const article = ref(`
   <h2>Условия предоставления туристических услуг</h2>
