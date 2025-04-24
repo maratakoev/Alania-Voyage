@@ -1,6 +1,23 @@
 <template>
   <div class="main-content" >
-    <slot name="image"></slot>
+    <div class="background-container">
+      <slot name="image"></slot>
+    <video 
+        v-if="videoSrc" 
+        class="video-background"
+        autoplay
+        loop
+        muted
+        playsinline
+        :poster="videoPoster"
+      >
+        <source :src="videoSrc" type="video/mp4">
+        Ваш браузер не поддерживает видео тег.
+      </video>
+      <div v-if="videoSrc" class="video-overlay"></div>
+
+    </div>
+
     <div class="main-content__content" :style="{ marginTop: marginTop + 'px' }">
       <h2 class="main-content__title">{{ title }}</h2>
       <h3 class="main-content__subtitle"> {{subTitle}}</h3>
@@ -69,6 +86,9 @@ defineProps({
   marginTop: { type: Number, default: 70 },
   buttonColor: String,
   buttonFontColor: String,
+  videoSrc: String, 
+  videoPoster: String,
+  
   modalData: {
     type: Object,
     required: true,
@@ -88,14 +108,52 @@ defineProps({
 
 <style scoped>
   .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
+    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 70vh;
+  overflow: hidden;/* Или нужная вам высота */
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
 }
 
 .main-content__content {
   max-width: 450px;
   position: absolute;
+  z-index: 1; 
   margin-top: 110px;
   margin-left: auto;
   margin-right: auto;

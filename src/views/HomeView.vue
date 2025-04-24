@@ -2,16 +2,20 @@
   <div class="home">
     <NavMenu class="nav" />
     <MainContent 
-      title="Экскурсии"
-      sub-title="Оказаться над облаками"
-      :marginTop="130"
+      class="hero-section"
+      title="Осетия ждёт вас!"
+      sub-title="Идеальный отдых без забот"
+      :marginTop="-70"
       :modalData="modalData[0]"
+      videoSrc="/videos/hero-background.mov"
+      videoPoster="/images/hero-poster.png"
 
     >
-      <template #image>
+      <!-- <template #image>
         <img src="/images/14.png" alt="Image 1" class="main-content__image">
-      </template>
+      </template> -->
     </MainContent>
+    <Trust></Trust>
 
     <MainContent 
       title="Проживание"
@@ -54,7 +58,6 @@
         </template>
       </MainContent> 
     </div>
-<Trust></Trust>
     <div class="home__table">
       <MainContent 
         title="Панорамы"
@@ -191,6 +194,12 @@ const modalData = ref([
 
 .nav {
   position: fixed;
+  margin-top: -70px;
+}
+
+.hero-section {
+  
+  /* e   */
 }
 
 .main-content {

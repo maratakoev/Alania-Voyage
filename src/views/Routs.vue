@@ -138,6 +138,7 @@ const article = `
 
 .nav {
 position: absolute;
+margin-top: -70px;
 }
 
 .content-title {
