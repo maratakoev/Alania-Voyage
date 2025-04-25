@@ -11,13 +11,28 @@
       videoPoster="/images/hero-poster.png"
 
     >
-      <!-- <template #image>
-        <img src="/images/14.png" alt="Image 1" class="main-content__image">
-      </template> -->
     </MainContent>
-    <Trust></Trust>
-
+    <Trust></Trust>    
     <MainContent 
+      title="Выходные в горах"
+      sub-title="Тур на 2 дня. Экономия 30%" 
+    >
+      <template #image>
+        <img src="/images/10.png" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
+
+    <div class="home__table">
+      
+      <MainContent 
+        title="Экскурсия "
+        sub-title="С комфортом на внедорожнике"
+      >
+        <template #image>
+          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
+        </template>
+      </MainContent> 
+      <MainContent 
       title="Проживание"
       sub-title="Лучшие виды из окна"
       :buttonColor="'#1D68F0'"
@@ -28,54 +43,6 @@
         <img src="/images/11.png" alt="Image 1" class="main-content__image">
       </template>
     </MainContent>
-
-    <MainContent 
-      title="Зругское озеро"
-      sub-title="Жемчужина Осетии"
-    >
-      <template #image>
-        <img src="/images/10.png" alt="Image 1" class="main-content__image">
-      </template>
-    </MainContent>
-
-    <div class="home__table">
-      <MainContent 
-        title="Откройте магию Северной Осетии"
-        sub-title="Экскурсии, проживание и незабываемые впечатления"
-        :buttonFontColor="'black'"
-        :buttonColor="'white'"
-      >
-        <template #image>
-          <img src="/images/9.png" alt="Image 1" class="main-content__image">
-        </template>
-      </MainContent>
-      <MainContent 
-        title="Горные реки"
-        sub-title="Невероятно красивого цвета"
-      >
-        <template #image>
-          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
-        </template>
-      </MainContent> 
-    </div>
-    <div class="home__table">
-      <MainContent 
-        title="Панорамы"
-        sub-title="Которые сложно забыть"
-        :marginTop="350"
-      >
-        <template #image>
-          <img src="/images/7.jpg" alt="Image 1" class="main-content__image">
-        </template>
-      </MainContent>
-      <MainContent 
-        title="Вершины"
-        sub-title="На расстоянии вытянутой руки"
-      >
-        <template #image>
-          <img src="/images/8.png" alt="Image 1" class="main-content__image-small">
-        </template>
-      </MainContent> 
     </div>
 
     <div class="slider">
@@ -85,9 +52,11 @@
     <ReviewForm/>
     <HotOffers></HotOffers>
     <InteractiveMap></InteractiveMap>
-    <UniqueSelling></UniqueSelling>
+    <!-- <UniqueSelling></UniqueSelling> -->
+    <FAQ/>
 
-    <Discription :articleText="article" />
+    <!-- <Discription :articleText="article" /> -->
+    <Footer/>
     <PreFooter />
   </div>
 </template>
@@ -97,13 +66,15 @@ import { ref } from 'vue';
 import MainContent from '@/components/main-content/MainContent.vue';
 import Slider from '@/components/swiper/Slider.vue';
 import NavMenu from '@/components/header/NavMenu.vue';
-// import PreFooter from '@/components/main-content/PreFooter.vue';
 import Discription from '@/components/main-content/Discription.vue';
-import ReviewForm from '@/components/Review-form.vue';
+import ReviewForm from '@/components/main-content/Review-form.vue';
 import HotOffers from '@/components/main-content/HotOffers.vue';
 import InteractiveMap from '@/components/main-content/InteractiveMap.vue';
 import UniqueSelling from '@/components/main-content/UniqueSelling.vue';
 import Trust from '@/components/main-content/Trust.vue';
+import TopSection from '@/components/main-content/TopSection.vue';
+import FAQ from '@/components/main-content/FAQ.vue';
+import Footer from '@/components/main-content/Footer.vue';
 
 const article = ref(`
   <h2>Условия предоставления туристических услуг</h2>

@@ -114,7 +114,7 @@ defineProps({
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 70vh;
+  min-height: 580px;
   overflow: hidden;/* Или нужная вам высота */
 }
 

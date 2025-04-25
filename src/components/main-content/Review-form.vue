@@ -1,51 +1,9 @@
 <template>
   <div class="reviews-container">
     <h2 class="reviews-title">Что говорят наши гости</h2>
+        <!-- Кнопка для открытия формы -->
     
-    <div class="add-review">
-      <h3>Расскажите о вашем впечатлении</h3>
-      <div class="rating-input">
-        <span>Оценка:</span>
-        <star-rating
-          v-model="newReview.rating"
-          :show-rating="true"
-          :star-size="30"
-          active-color="#FFD700"
-          :increment="1"
-        />
-      </div>
-      <textarea
-        v-model="newReview.text"
-        placeholder="Напишите ваш отзыв..."
-        class="review-textarea"
-        rows="4"
-      ></textarea>
-      <input
-        v-model="newReview.author"
-        type="text"
-        placeholder="Ваше имя"
-        class="review-author-input"
-      />
-      <div class="image-upload">
-        <label for="review-image" class="upload-label">
-          <span v-if="!newReview.image">Добавить фото</span>
-          <span v-else>Изменить фото</span>
-          <input
-            id="review-image"
-            type="file"
-            accept="image/*"
-            @change="handleImageUpload"
-            class="file-input"
-          />
-        </label>
-        <div v-if="newReview.imagePreview" class="image-preview">
-          <img :src="newReview.imagePreview" alt="Предпросмотр фото" />
-          <button @click="removeImage" class="remove-image-btn">×</button>
-        </div>
-      </div>
-
-      <button @click="submitReview" class="submit-button">Отправить отзыв</button>
-    </div>
+    
 
     <div class="reviews-list">
       <div v-for="(review, index) in reviewsStore.reviews" :key="index" class="review-item">
@@ -94,18 +52,76 @@
       />
       </div>
     </transition>
+    <button 
+      @click="toggleReviewForm" 
+      class="create-review-button"
+      v-if="!newReviewOpen"
+    >
+      Оставить свой отзыв
+    </button>
+    <transition name="slide-fade">
+
+      <div v-if="newReviewOpen" class="add-review">
+      <h3>Расскажите о вашем впечатлении</h3>
+      <div class="rating-input">
+        <span>Оценка:</span>
+        <star-rating
+          v-model="newReview.rating"
+          :show-rating="true"
+          :star-size="30"
+          active-color="#FFD700"
+          :increment="1"
+        />
+      </div>
+      <textarea
+        v-model="newReview.text"
+        placeholder="Напишите ваш отзыв..."
+        class="review-textarea"
+        rows="4"
+      ></textarea>
+      <input
+        v-model="newReview.author"
+        type="text"
+        placeholder="Ваше имя"
+        class="review-author-input"
+      />
+      <div class="image-upload">
+        <label for="review-image" class="upload-label">
+          <span v-if="!newReview.image">Добавить фото</span>
+          <span v-else>Изменить фото</span>
+          <input
+            id="review-image"
+            type="file"
+            accept="image/*"
+            @change="handleImageUpload"
+            class="file-input"
+          />
+        </label>
+        <div v-if="newReview.imagePreview" class="image-preview">
+          <img :src="newReview.imagePreview" alt="Предпросмотр фото" />
+          <button @click="removeImage" class="remove-image-btn">×</button>
+        </div>
+      </div>
+      <button @click="submitReview" class="submit-button">Отправить отзыв</button>
+        <button @click="toggleReviewForm" class="cancel-button">Отмена</button>
+      
+    </div>
+    </transition>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue'
 import StarRating from 'vue3-star-ratings'
-import { useReviewsStore } from '../store/reviews'
+import { useReviewsStore } from '../../store/reviews'
 
 const reviewsStore = useReviewsStore()
 
 const showErrorModal = ref(false)
 
+const toggleReviewForm = () => {
+  newReviewOpen.value = !newReviewOpen.value
+}
 
 const newReview = reactive({
   author: '',
@@ -114,6 +130,7 @@ const newReview = reactive({
   image: null,
   imagePreview: null,
 })
+const newReviewOpen = ref(false) // Теперь это реактивная переменная
 
 const handleImageUpload = (event) => {
   const file = event.target.files[0]
@@ -204,6 +221,7 @@ const handleTouchEnd = (e) => {
     zoomedImage.value = null
   }
 }
+
 </script>
 
 
@@ -272,7 +290,7 @@ const handleTouchEnd = (e) => {
 
 .reviews-container {
   max-width: 950px;
-  max-height: 950px;
+  max-height: 1121px;
   margin: 0 auto;
   padding: 20px;
   font-family: var(--ios-font);
@@ -528,6 +546,55 @@ const handleTouchEnd = (e) => {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+
+.create-review-button {
+  background-color: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-review-button:hover {
+  background-color: #0062CC;
+}
+
+.cancel-button {
+  background-color: #FF3B30;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+  background-color: #D70015;
+}
+
+/* Анимация появления/скрытия формы */
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
 }
 
 
