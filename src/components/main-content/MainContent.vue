@@ -29,7 +29,7 @@
         @click="openModal"
         />
         <btn-second
-        buttonText="Забронировать"
+        buttonText="Все включено"
         :buttonBgColor="buttonColor" 
         />
       </div> 

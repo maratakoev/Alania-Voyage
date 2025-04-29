@@ -1,6 +1,8 @@
 <template>
   <div class="gallery">
     <NavMenu class="nav" />
+    <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
+    <Title-image :imageSrc="imageSrc"></Title-image>
     
     <div class="gallery__container">
       <div class="gallery__grid">
@@ -19,13 +21,14 @@
       </div>
     </div>
 
-    <div class="slider">
+    <!-- <div class="slider">
       <Slider />
-    </div>
+    </div> -->
 
-    <Discription :articleText="article" />
-    <PreFooter />
-
+    <!-- <Discription :articleText="article" /> -->
+    <!-- <PreFooter /> -->
+    <FAQ></FAQ>
+    <Footer></Footer>
     <!-- Модальное окно -->
     <div v-if="isModalOpen" class="modal" @click.self="closeModal">
       <div class="modal__content">
@@ -46,10 +49,22 @@ import { ref } from 'vue';
 import NavMenu from '@/components/header/NavMenu.vue';
 import Slider from '@/components/swiper/Slider.vue';
 import Discription from '@/components/main-content/Discription.vue';
+import MainContent from '@/components/main-content/MainContent.vue';
+import TitleImage from '@/components/main-content/TitleImage.vue';
+import ContentTitle from '@/components/main-content/ContentTitle.vue';
+import Footer from '@/components/main-content/Footer.vue';
+import FAQ from '@/components/main-content/FAQ.vue';
+
 // import PreFooter from '@/components/main-content/PreFooter.vue';
+const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
+
+const contentTitle = 'Беззаботно';
+const contentTitleDiscription = 'Наслаждаться отдыхом';
+
 
 const isModalOpen = ref(false);
 const currentItem = ref({});
+
 
 const galleryItems = ref([
   {
@@ -128,9 +143,9 @@ const closeModal = () => {
 </script>
 
 <style scoped>
-.gallery {
+/* .gallery {
   padding-top: 80px;
-}
+} */
 
 .nav {
   position: fixed;
@@ -139,6 +154,10 @@ const closeModal = () => {
   right: 0;
   z-index: 100;
 }
+
+/* .content-title {
+  padding-top: 70px;
+} */
 
 .gallery__container {
   max-width: 1400px;

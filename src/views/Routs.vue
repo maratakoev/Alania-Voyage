@@ -3,11 +3,24 @@
     <NavMenu class="nav" />
     <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
     <Title-image :imageSrc="imageSrc"></Title-image>
+    
+    <!-- <MainContent 
+      class="hero-section"
+      title="Осетия ждёт вас!"
+      sub-title="Идеальный отдых без забот"
+      :marginTop="-70"
+      :modalData="modalData[0]"
+      videoSrc="/videos/hero-background.mov"
+      videoPoster="/images/hero-poster.png"
+
+    >
+    </MainContent> -->
     <ContentSubTitle :title="contentSubTitle"></ContentSubTitle>
-    <VerticalSlider ></VerticalSlider>
+    <!-- <VerticalSlider ></VerticalSlider> -->
+    
     <MainContent      
-      title="Рассвет"
-      sub-title="Встретить рассвет над облаками"
+      title="Три ущелья"
+      sub-title="Фиагдон, Даргавс, Кармадон"
       :marginTop="130"
     >
       <template #image>
@@ -17,8 +30,8 @@
     </MainContent>
     <div class="home__table">
       <MainContent 
-        title="Обед"
-        sub-title="Обедать можно по разному"
+        title="Цей"
+        sub-title="Ближе к ледникам"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
       >
@@ -27,8 +40,8 @@
         </template>
       </MainContent>
       <MainContent 
-        title="Лошади"
-        sub-title="Прогулка на лошадях"
+        title="Дигория"
+        sub-title="Водопад три сестры"
       >
         <template #image>
           <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
@@ -37,8 +50,8 @@
     </div>
     <div class="home__table">
       <MainContent 
-        title="Параплан"
-        sub-title="Почувствуй свободу"
+        title="Алагирское ущелье"
+        sub-title="Почувствуй свободу мысли"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
       >
@@ -47,8 +60,8 @@
         </template>
       </MainContent>
       <MainContent 
-        title="Сплав"
-        sub-title="По горной реке на каяках"
+        title="Лавочка счастья"
+        sub-title="Это будет очень дорого"
       >
         <template #image>
           <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
@@ -57,8 +70,8 @@
     </div>
     <div class="home__table">
       <MainContent 
-        title="Групповые туры"
-        sub-title="Как проходят групповые экскурсии"
+        title="Кармадон и Даргавс"
+        sub-title="Это чуть дешевле"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
       >
@@ -67,15 +80,18 @@
         </template>
       </MainContent>
       <MainContent 
-        title="Праздники"
-        sub-title="На высоте на едине"
+        title="Цамад"
+        sub-title="Фототур для инсты"
       >
         <template #image>
           <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
-    <Discription :articleText="article"></Discription>
+    <FAQ/>
+    <Footer></Footer>
+    <!-- <Booking/> -->
+    <!-- <Discription :articleText="article"></Discription> -->
   </div>
 </template>
 
@@ -87,10 +103,13 @@ import ContentSubTitle from '@/components/main-content/ContentSubTitle.vue';
 import VerticalSlider from '@/components/swiper/VerticalSlider.vue';
 import Discription from '@/components/main-content/Discription.vue';
 import MainContent from '@/components/main-content/MainContent.vue';
+import Booking from '@/components/main-content/Booking.vue';
+import Footer from '@/components/main-content/Footer.vue';
+import FAQ from '@/components/main-content/FAQ.vue';
 
 const contentTitle = 'Экскурсии';
 const contentTitleDiscription = 'Увидеть своими глазами.';
-const contentSubTitle = 'Путеводитель по Осетии';
+const contentSubTitle = 'Куда направимся?';
 
 const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
 

@@ -3,8 +3,8 @@
     <NavMenu class="nav" />
     <MainContent 
       class="hero-section"
-      title="Осетия ждёт вас!"
-      sub-title="Идеальный отдых без забот"
+      title="Осетия ждет!"
+      sub-title="Твоё приключение начинается..."
       :marginTop="-70"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.mov"
@@ -12,7 +12,6 @@
 
     >
     </MainContent>
-    <Trust></Trust>    
     <MainContent 
       title="Выходные в горах"
       sub-title="Тур на 2 дня. Экономия 30%" 
@@ -48,6 +47,7 @@
     <div class="slider">
       <Slider />
     </div>
+    <Trust></Trust>    
 
     <ReviewForm/>
     <HotOffers></HotOffers>
@@ -57,7 +57,7 @@
 
     <!-- <Discription :articleText="article" /> -->
     <Footer/>
-    <PreFooter />
+    <!-- <PreFooter /> -->
   </div>
 </template>
 

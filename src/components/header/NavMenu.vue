@@ -63,13 +63,13 @@ const menuItems = [
       { label: 'Во Владикавказе', route: '/living#vladikavkaz' }
     ],  
   },
-  { label: 'Об Осетии', 
+  { label: 'Полный тур', 
     route: '/galery', 
     submenu: [
       { label: 'Фотографии', route: '/galery#photos' }
     ], 
   },
-  { label: 'Контакты', 
+  { label: 'О нас', 
     route: '/about', 
     submenu: [
         { label: 'Соц сети', route: '/about#social' },
