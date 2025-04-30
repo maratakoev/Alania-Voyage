@@ -15,7 +15,7 @@
           </transition>
         
         </router-link>
-      asxas</span>
+      </span>
       <Burger class="burger" @toggle="handleBurgerToggle" />
     </div>
 
@@ -155,6 +155,18 @@ const menuStyle = computed(() => ({
   }
 
   .mobile-menu__link:hover {
-    color: rgb(214, 165, 83);
+    color: #1D68F0;
   }
+
+  @media (max-width: 900px) {
+  .mobile-menu__item {
+    
+    font-size: 28px;
+  }
+
+  /* .mobile-menu__list {
+            margin-top: -30px;
+        margin-left: -20px;
+  } */
+}
 </style>

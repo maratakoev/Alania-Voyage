@@ -143,9 +143,11 @@ const getItemStyle = (index) => ({
 }
 
 .content {
-  max-width: 1024px;
+  max-width: 1064px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .header__navigation {
@@ -156,7 +158,8 @@ const getItemStyle = (index) => ({
   height: 70px;
   color: #333;
   text-decoration: none;
-  padding: 0 50px;
+  padding: 0px 0px;
+  margin: 0px 0px;
 }
 
 .header__item {
@@ -170,15 +173,15 @@ const getItemStyle = (index) => ({
 }
 
 .header__item.router-link-exact-active {
-  color: rgb(214, 165, 83); /* Цвет для активной ссылки */
+  color: rgb(216, 174, 94); /* Цвет для активной ссылки */
   transform: scale(1.2);
 }
 
 .header__logo {
-  width: 50px;
+  width: 130px;
   backdrop-filter: blur(25px);
-  border-radius: 50px;
-  border: 2px solid rgb(214, 165, 83);
+  border-radius: 8px;
+  /* border: 2px solid rgb(214, 165, 83); */
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -244,5 +247,6 @@ const getItemStyle = (index) => ({
   .header__item {
     display: none;
   }
+  
 }
 </style>

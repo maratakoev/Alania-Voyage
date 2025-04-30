@@ -93,7 +93,7 @@
 
 <style scoped>
 .footer {
-  background: #ffffff;
+  background: #f1f1f1;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   padding: 48px 0 24px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;

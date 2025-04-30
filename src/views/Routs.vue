@@ -109,7 +109,7 @@ import FAQ from '@/components/main-content/FAQ.vue';
 
 const contentTitle = 'Экскурсии';
 const contentTitleDiscription = 'Увидеть своими глазами.';
-const contentSubTitle = 'Куда направимся?';
+const contentSubTitle = 'Выбери маршрут';
 
 const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
 
@@ -160,9 +160,9 @@ position: absolute;
 margin-top: -70px;
 }
 
-.content-title {
+/* .content-title {
   padding-top: 70px;
-}
+} */
 
 .main-content__image {
   width: 100%;
@@ -189,6 +189,13 @@ margin-top: -70px;
 @media (max-width: 1000px) {
   .home__table {
     flex-direction: column;
+  }
+
+}
+@media (max-width: 600px) {
+  .content-title {
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 }
 

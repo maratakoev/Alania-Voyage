@@ -26,7 +26,8 @@
         <img src="@/assets/titleImages/12.png" alt="Image 1" class="main-content__image">
       </template>
     </MainContent>
-    <Discription :articleText="article"></Discription>
+    <Footer></Footer>
+    <!-- <Discription :articleText="article"></Discription> -->
   </div>
 </template>
 
@@ -37,6 +38,7 @@ import TitleImage from '@/components/main-content/TitleImage.vue';
 import ContentSubTitle from '@/components/main-content/ContentSubTitle.vue';
 import Discription from '@/components/main-content/Discription.vue';
 import MainContent from '@/components/main-content/MainContent.vue';
+import Footer from '@/components/main-content/Footer.vue';
 
 const contentTitle = 'Проживание';
 const contentTitleDiscription = 'Сказочные панорамы';
@@ -93,17 +95,20 @@ const article = `
 
 .nav {
 position: absolute;
+margin-top: -70px;
 }
 
-.content-title {
+/* .content-title {
   padding-top: 70px;
-}
+} */
 
 
 @media (max-width: 1000px) {
-  /* .content-title {
-    display: none;
-  } */
+  .content-title {
+  width: 80%;
+}
+
+
 }
 
 </style>

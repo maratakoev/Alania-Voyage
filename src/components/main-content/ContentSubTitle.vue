@@ -28,7 +28,7 @@ defineProps({
   margin-right: auto;
 }
 .content-title {
-  width: 95%;
+  max-width: 95%;
   height: 90px;
   padding: 0 20px;
   margin-top: 30px;
@@ -48,7 +48,7 @@ defineProps({
 }
 
 .content-title__subtitle {
-  font-size: 30px;
+  font-size: 28px;
   color: black;
   font-weight: 600;
   word-spacing: 2px;
@@ -56,6 +56,14 @@ defineProps({
   align-items: baseline;
 
 
+
+}
+
+@media (max-width: 768px) {
+
+  .content-title__title {
+    font-size: 40px;
+  }
 
 }
 

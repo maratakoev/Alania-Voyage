@@ -251,5 +251,8 @@ const tabs = ref([
   .section-title {
     font-size: 1.6rem;
   }
+  .nav {
+  margin-top: -70px;
+}
 }
 </style>

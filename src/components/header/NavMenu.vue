@@ -24,8 +24,8 @@ import MobileMenu from './MobileMenu.vue';
 import Header from './Header.vue';
 
 const name = ref('');
-const logo_dark = '/images/logo_dark.jpg';  
-const logo = '/images/logo_white.jpg';  // Логотип
+const logo_dark = '/images/LogoA.png';  
+const logo = '/images/LogoAlong.png';  // Логотип
 const menuItems = [
   {
     label: 'Экскурсии',

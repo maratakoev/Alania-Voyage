@@ -30,15 +30,17 @@ const contentSubTitle = 'Увидеть своими глазами.';
 </script>
 
 <style scoped>
-.content {
-  max-width: 1024px;
+/* .content {
+  max-width: 1064px;
   margin-left: auto;
   margin-right: auto;
-}
+  padding-left: 20px;
+  padding-right: 20px;
+} */
 .content-title {
-  width: 95%;
+  max-width: 1064px;
   height: 90px;
-  padding: 0 20px;
+  padding: 0 15px;
   margin-top: 30px;
   margin-bottom: 50px;
   display: flex;
@@ -62,6 +64,7 @@ const contentSubTitle = 'Увидеть своими глазами.';
   word-spacing: 2px;
   max-width: 300px;
   align-items: baseline;
+  text-align: right;
 
 }
 
@@ -69,11 +72,19 @@ const contentSubTitle = 'Увидеть своими глазами.';
   .content-title__subtitle {
     display: none;
   }
+  .content-title__title {
+    font-size: 55px;
+    
+  }
+  .content-title {
+    width: 90%;
+    
+  }
 }
 
 @media (max-width: 430px) {
-  .content-title__title {
-    font-size: 79px;
+  /* .content-title__title {
+    font-size: 55px;
     
   }
   .content-title__subtitle {
@@ -82,14 +93,14 @@ const contentSubTitle = 'Увидеть своими глазами.';
   margin-bottom: 0px;
 
 
-}
+} */
 
 }
 
 @media (max-width: 390px) {
-  .content-title__title {
-    font-size: 70px;
-  }
+  /* .content-title__title {
+    font-size: 48px;
+  } */
 
 }
 

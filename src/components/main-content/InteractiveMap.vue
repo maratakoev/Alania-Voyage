@@ -376,6 +376,7 @@ onUnmounted(() => {
 .map-section {
   padding: 40px 0;
   background: #f5f7fa;
+  max-height: 975px;
 }
 
 .map-header {
@@ -578,6 +579,8 @@ onUnmounted(() => {
   
   .location-info-container {
     flex-direction: column;
+    max-height: 536px;
+
   }
   
   .location-image-wrapper,
@@ -591,6 +594,7 @@ onUnmounted(() => {
   
   .location-details {
     padding: 20px;
+    max-width: 90%;
   }
 }
 </style>

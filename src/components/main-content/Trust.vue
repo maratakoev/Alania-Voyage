@@ -27,13 +27,13 @@
           <div class="badge-content">
             <h3 class="title">{{ item.title }}</h3>
             <p class="description">{{ item.description }}</p>
-            <a 
+            <!-- <a 
               v-if="item.link" 
               :href="item.link" 
               class="link"
             >
               {{ item.linkText }} →
-            </a>
+            </a> -->
           </div>
         </div>
       </div>
@@ -116,6 +116,10 @@ const trustItems = ref([
 }
 
 .badge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   background: white;
   border-radius: 0.75rem;
   padding: 1.5rem;
