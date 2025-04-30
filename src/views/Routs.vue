@@ -24,7 +24,10 @@
       :marginTop="-150"
     >
       <template #image>
-        <img src="/images/dargavs.jpeg" alt="Image 1" class="main-content__image">
+        <img 
+        loading="lazy"
+        decoding="async"
+        src="/images/dargavs.jpeg" alt="Image 1" class="main-content__image">
       </template>
       
     </MainContent>
@@ -38,7 +41,10 @@
         :buttonColor="'white'"
       >
         <template #image>
-          <img src="/images/karmadon.webp" alt="Image 1" class="main-content__image">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/karmadon.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -50,7 +56,10 @@
 
       >
         <template #image>
-          <img src="/images/insta.webp" alt="Image 1" class="main-content__image-small">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/insta.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -64,7 +73,10 @@
 
       >
         <template #image>
-          <img src="/images/alagirskoe.webp" alt="Image 1" class="main-content__image">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/alagirskoe.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -73,7 +85,10 @@
         :marginTop="50"
       >
         <template #image>
-          <img src="/images/lavochka.webp" alt="Image 1" class="main-content__image-small">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/lavochka.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -87,7 +102,10 @@
 
       >
         <template #image>
-          <img src="/images/mamison.webp" alt="Image 1" class="main-content__image">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/mamison.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -112,7 +130,10 @@
 
       >
         <template #image>
-          <img src="/images/karmadon-darg.webp" alt="Image 1" class="main-content__image">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/karmadon-darg.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -122,7 +143,10 @@
 
       >
         <template #image>
-          <img src="/images/darial.webp" alt="Image 1" class="main-content__image-small">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/darial.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -136,7 +160,10 @@
 
       >
         <template #image>
-          <img src="/images/zadalesk.webp" alt="Image 1" class="main-content__image">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/zadalesk.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -147,7 +174,10 @@
 
       >
         <template #image>
-          <img src="/images/alagir-ardon.webp" alt="Image 1" class="main-content__image-small">
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/alagir-ardon.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
