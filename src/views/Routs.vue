@@ -94,7 +94,7 @@
         title="Згидский перевал"
         sub-title="Выше облаков на внедорожнике"
         :marginTop="190"
-                videoSrc="/videos/zgid.mov"
+                videoSrc="/videos/zgid.webm"
         videoPoster="/images/hero-poster.png"
       >
         <!-- <template #image>
@@ -143,13 +143,12 @@
         title="По долине реки Ардон"
         sub-title="Самая крупная гэс республики"
         :marginTop="-250"
-                videoSrc="/videos/ardon.mov"
-        videoPoster="/images/hero-poster.png"
+
 
       >
-        <!-- <template #image>
-          <img src="/images/zgid.png" alt="Image 1" class="main-content__image-small">
-        </template> -->
+        <template #image>
+          <img src="/images/alagir-ardon.jpeg" alt="Image 1" class="main-content__image-small">
+        </template>
       </MainContent> 
     </div>
     <FAQ/>

@@ -8,7 +8,7 @@
 :buttonColor="'#1D68F0'"
       :marginTop="-70"
       :modalData="modalData[0]"
-      videoSrc="/videos/hero-background.mov"
+      videoSrc="/videos/hero-background.webm"
       videoPoster="/images/hero-poster.png"
 
     >
