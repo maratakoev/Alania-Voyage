@@ -47,7 +47,7 @@
 <script setup>
 import { ref } from 'vue';
 import NavMenu from '@/components/header/NavMenu.vue';
-import Slider from '@/components/swiper/Slider.vue';
+// import Slider from '@/components/swiper/Slider.vue';
 import Discription from '@/components/main-content/Discription.vue';
 import MainContent from '@/components/main-content/MainContent.vue';
 import TitleImage from '@/components/main-content/TitleImage.vue';
@@ -68,43 +68,43 @@ const currentItem = ref({});
 
 const galleryItems = ref([
   {
-    image: '/images/14.png',
+    image: '/images/lavochka.webp',
     title: 'Экскурсии',
     subtitle: 'Оказаться над облаками',
     description: 'Незабываемые экскурсии по живописным маршрутам Северного Кавказа с профессиональными гидами.'
   },
   {
-    image: '/images/11.png',
+    image: '/images/lavochka.webp',
     title: 'Проживание',
     subtitle: 'Лучшие виды из окна',
     description: 'Уютные гостевые дома с панорамными видами на горные хребты и долины.'
   },
   {
-    image: '/images/10.png',
+    image: '/images/lavochka.webp',
     title: 'Зругское озеро',
     subtitle: 'Жемчужина Осетии',
     description: 'Кристально чистое горное озеро на высоте 2000 метров над уровнем моря.'
   },
   {
-    image: '/images/9.png',
+    image: '/images/lavochka.webp',
     title: 'Водопад',
     subtitle: 'Самый высокий в Европе',
     description: 'Величественный водопад высотой более 600 метров в сердце Кавказских гор.'
   },
   {
-    image: '/images/6.png',
+    image: '/images/lavochka.webp',
     title: 'Горные реки',
     subtitle: 'Невероятно красивого цвета',
     description: 'Ледниковые реки с бирюзовой водой, прорезающие горные ущелья.'
   },
   {
-    image: '/images/7.jpg',
+    image: '/images/lavochka.webp',
     title: 'Панорамы',
     subtitle: 'Которые сложно забыть',
     description: 'Захватывающие дух виды на горные массивы с высоты птичьего полета.'
   },
   {
-    image: '/images/8.png',
+    image: '/images/lavochka.webp',
     title: 'Вершины',
     subtitle: 'На расстоянии вытянутой руки',
     description: 'Возможность подняться на вершины, доступные только опытным альпинистам.'

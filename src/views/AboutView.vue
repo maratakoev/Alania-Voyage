@@ -45,9 +45,9 @@
     </section>
 
     <!-- Slider -->
-    <div class="slider">
+    <!-- <div class="slider">
       <Slider />
-    </div>
+    </div> -->
 
     <!-- Footer -->
     <Footer />
@@ -57,7 +57,7 @@
 <script setup>
 import { ref } from 'vue';
 import NavMenu from '@/components/header/NavMenu.vue';
-import Slider from '@/components/swiper/Slider.vue';
+// import Slider from '@/components/swiper/Slider.vue';
 import Footer from '@/components/main-content/Footer.vue';
 import TitleImage from '@/components/main-content/TitleImage.vue';
 import ContentTitle from '@/components/main-content/ContentTitle.vue';
