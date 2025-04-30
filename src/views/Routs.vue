@@ -38,7 +38,7 @@
         :buttonColor="'white'"
       >
         <template #image>
-          <img src="/images/karmadon.png" alt="Image 1" class="main-content__image">
+          <img src="/images/karmadon.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -50,7 +50,7 @@
 
       >
         <template #image>
-          <img src="/images/insta.jpeg" alt="Image 1" class="main-content__image-small">
+          <img src="/images/insta.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -64,7 +64,7 @@
 
       >
         <template #image>
-          <img src="/images/alagirskoe.png" alt="Image 1" class="main-content__image">
+          <img src="/images/alagirskoe.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -73,7 +73,7 @@
         :marginTop="50"
       >
         <template #image>
-          <img src="/images/lavochka.png" alt="Image 1" class="main-content__image-small">
+          <img src="/images/lavochka.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -87,15 +87,15 @@
 
       >
         <template #image>
-          <img src="/images/mamison.jpg" alt="Image 1" class="main-content__image">
+          <img src="/images/mamison.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
         title="Згидский перевал"
         sub-title="Выше облаков на внедорожнике"
         :marginTop="190"
-                videoSrc="/videos/zgid.webm"
-        videoPoster="/images/hero-poster.png"
+        videoSrc="/videos/zgid.webm"
+        videoPoster="/images/zgid-poster.webp"
       >
         <!-- <template #image>
           <img src="/videos/zgid.mov" alt="Image 1" class="main-content__image-small">
@@ -112,7 +112,7 @@
 
       >
         <template #image>
-          <img src="/images/karmadon-darg.png" alt="Image 1" class="main-content__image">
+          <img src="/images/karmadon-darg.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -122,7 +122,7 @@
 
       >
         <template #image>
-          <img src="/images/darial.png" alt="Image 1" class="main-content__image-small">
+          <img src="/images/darial.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -136,7 +136,7 @@
 
       >
         <template #image>
-          <img src="/images/zadalesk.png" alt="Image 1" class="main-content__image">
+          <img src="/images/zadalesk.webp" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
@@ -147,7 +147,7 @@
 
       >
         <template #image>
-          <img src="/images/alagir-ardon.jpeg" alt="Image 1" class="main-content__image-small">
+          <img src="/images/alagir-ardon.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>

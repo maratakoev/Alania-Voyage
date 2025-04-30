@@ -39,7 +39,7 @@
         :modalData="modalData[2]"
       >
         <template #image>
-          <img src="/images/zgid.png" alt="Image 1" class="main-content__image-small">
+          <img src="/images/zgid.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
       <MainContent 
