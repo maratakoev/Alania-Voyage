@@ -51,7 +51,7 @@ const gradientBackground = {
 const trustItems = ref([
 {
     title: "Более 1000 довольных гостей",
-    description: "Реальные отзывы с фото. Работаем так, чтобы вы хотели вернуться снова.",
+    description: "Мы работаем так, чтобы вы захотели вернуться.",
     link: "/reviews",
     linkText: "Смотреть отзывы",
     iconPaths: [
@@ -61,7 +61,7 @@ const trustItems = ref([
   },
 {
     title: "Фиксированная цена",
-    description: "Мы предупреждаем обо всех возможных расходах, без сюрпризов и неожиданностей.",
+    description: "Мы предупреждаем о возможных расходах, без скрытых платежей.",
     link: "/pricing",
     linkText: "Подробнее",
     iconPaths: [

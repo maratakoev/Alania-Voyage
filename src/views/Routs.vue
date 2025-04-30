@@ -2,7 +2,7 @@
   <div class="routs">
     <NavMenu class="nav" />
     <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
-    <Title-image :imageSrc="imageSrc"></Title-image>
+    <!-- <Title-image :imageSrc="imageSrc"></Title-image> -->
     
     <!-- <MainContent 
       class="hero-section"
@@ -15,57 +15,91 @@
 
     >
     </MainContent> -->
-    <ContentSubTitle :title="contentSubTitle"></ContentSubTitle>
+    <!-- <ContentSubTitle :title="contentSubTitle"></ContentSubTitle> -->
     <!-- <VerticalSlider ></VerticalSlider> -->
     
     <MainContent      
-      title="Три ущелья"
-      sub-title="Фиагдон, Даргавс, Кармадон"
-      :marginTop="130"
+      title="Древние тропы"
+      sub-title="Ближе к небу, ближе к легендам"
+      :marginTop="-150"
     >
       <template #image>
-        <img src="/images/14.png" alt="Image 1" class="main-content__image">
+        <img src="/images/dargavs.jpeg" alt="Image 1" class="main-content__image">
       </template>
       
     </MainContent>
     <div class="home__table">
       <MainContent 
-        title="Цей"
-        sub-title="Ближе к ледникам"
+        title="Высота 1800"
+        sub-title="От Кармадона до Даргавса"
+        :marginTop="200"
+
         :buttonFontColor="'black'"
         :buttonColor="'white'"
       >
         <template #image>
-          <img src="/images/9.png" alt="Image 1" class="main-content__image">
+          <img src="/images/karmadon.png" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
-        title="Дигория"
-        sub-title="Водопад три сестры"
+        title="Insta-марафон"
+        sub-title="ТОП-5 локаций для фото"
+        :marginTop="200"
+        :buttonColor="'white'"
+        :buttonFontColor="'black'"
+
       >
         <template #image>
-          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
+          <img src="/images/insta.jpeg" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
     <div class="home__table">
       <MainContent 
-        title="Алагирское ущелье"
+        title="Верхний Мизур"
         sub-title="Почувствуй свободу мысли"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
+        :marginTop="-80"
+
       >
         <template #image>
-          <img src="/images/9.png" alt="Image 1" class="main-content__image">
+          <img src="/images/alagirskoe.png" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
         title="Лавочка счастья"
-        sub-title="Это будет очень дорого"
+        sub-title="Счастье не за горами, оно в горах"
+        :marginTop="50"
       >
         <template #image>
-          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
+          <img src="/images/lavochka.png" alt="Image 1" class="main-content__image-small">
         </template>
+      </MainContent> 
+    </div>
+    <div class="home__table">
+      <MainContent 
+        title="Мамисон"
+        sub-title="Горнолыжная трасса, открытая этой зимой"
+        :buttonFontColor="'black'"
+        :buttonColor="'white'"
+        :marginTop="190"
+
+      >
+        <template #image>
+          <img src="/images/mamison.jpg" alt="Image 1" class="main-content__image">
+        </template>
+      </MainContent>
+      <MainContent 
+        title="Згидский перевал"
+        sub-title="Выше облаков на внедорожнике"
+        :marginTop="190"
+                videoSrc="/videos/zgid.mov"
+        videoPoster="/images/hero-poster.png"
+      >
+        <!-- <template #image>
+          <img src="/videos/zgid.mov" alt="Image 1" class="main-content__image-small">
+        </template> -->
       </MainContent> 
     </div>
     <div class="home__table">
@@ -74,18 +108,48 @@
         sub-title="Это чуть дешевле"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
+        :marginTop="190"
+
       >
         <template #image>
-          <img src="/images/9.png" alt="Image 1" class="main-content__image">
+          <img src="/images/karmadon-darg.png" alt="Image 1" class="main-content__image">
         </template>
       </MainContent>
       <MainContent 
-        title="Цамад"
-        sub-title="Фототур для инсты"
+        title="Военно-грузинская дорога"
+        sub-title="Дарьяльские ворота"
+        :marginTop="-190"
+
       >
         <template #image>
-          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
+          <img src="/images/darial.png" alt="Image 1" class="main-content__image-small">
         </template>
+      </MainContent> 
+    </div>
+    <div class="home__table">
+      <MainContent 
+        title="Горная Дигория"
+        sub-title="До водопада Жемчужина по эко тропе"
+        :buttonFontColor="'black'"
+        :buttonColor="'white'"
+        :marginTop="-270"
+
+      >
+        <template #image>
+          <img src="/images/zadalesk.png" alt="Image 1" class="main-content__image">
+        </template>
+      </MainContent>
+      <MainContent 
+        title="По долине реки Ардон"
+        sub-title="Самая крупная гэс республики"
+        :marginTop="-250"
+                videoSrc="/videos/ardon.mov"
+        videoPoster="/images/hero-poster.png"
+
+      >
+        <!-- <template #image>
+          <img src="/images/zgid.png" alt="Image 1" class="main-content__image-small">
+        </template> -->
       </MainContent> 
     </div>
     <FAQ/>

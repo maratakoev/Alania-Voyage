@@ -185,7 +185,7 @@ defineProps({
   margin-bottom: 15px;
   z-index: 2;
   color: white;
-  font-size: 35px;
+  font-size: 28px;
 }
 
 .buttons {
