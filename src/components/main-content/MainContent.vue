@@ -1,15 +1,16 @@
 <template>
-  <div class="main-content" >
+  <div class="main-content" ref="container">
     <div class="background-container">
       <slot name="image"></slot>
-    <video 
-        v-if="videoSrc" 
+      <video 
+        v-if="shouldLoadVideo"
         class="video-background"
         autoplay
         loop
         muted
         playsinline
-        :poster="videoPoster"
+        :poster="shouldLoadPoster ? videoPoster : ''"
+        preload="none"
       >
         <source :src="videoSrc" type="video/mp4">
         Ваш браузер не поддерживает видео тег.
@@ -49,7 +50,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref,onMounted, onBeforeUnmount  } from 'vue';
 import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; // путь укажи, как у тебя в проекте
@@ -80,29 +81,45 @@ function onButton2Click() {
 }
 
 
-defineProps({
+const props = defineProps({
+  lazyLoad: { type: Boolean, default: true },
   title: String,
   subTitle: String,
   marginTop: { type: Number, default: 70 },
   buttonColor: String,
   buttonFontColor: String,
-  videoSrc: String, 
+  videoSrc: String,
   videoPoster: String,
-  
-  modalData: {
-    type: Object,
-    required: true,
-    default: () => ({
-      title: '',
-      content: '',
-      button1Text: 'Перейти в раздел',
-      button2Text: 'Закрыть',
-      button1BgColor: '#4CAF50',
-      button2BgColor: '#f44336',
-      button1FontColor: '#fff',
-      button2FontColor: '#fff',
-    })
+  modalData: Object
+});
+
+const container = ref(null);
+
+
+const shouldLoadVideo = ref(!props.lazyLoad);
+const shouldLoadPoster = ref(!props.lazyLoad);
+const observer = ref(null);;
+onMounted(() => {
+  if (props.lazyLoad && container.value) {
+    observer.value = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          shouldLoadVideo.value = true;
+          shouldLoadPoster.value = true;
+          observer.value?.disconnect();
+        }
+      });
+    }, {
+      rootMargin: '200px',
+      threshold: 0.01
+    });
+
+    observer.value.observe(container.value);
   }
+});
+
+onBeforeUnmount(() => {
+  observer.value?.disconnect();
 });
 </script>
 

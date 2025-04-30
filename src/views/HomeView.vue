@@ -5,12 +5,12 @@
       class="hero-section"
       title="Осетия ждет!"
       sub-title="Твоё приключение начинается..."
-:buttonColor="'#1D68F0'"
+      :buttonColor="'#1D68F0'"
       :marginTop="-70"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.webm"
       videoPoster="/images/hero-poster.webp"
-
+      :lazyLoad="false"
     >
     </MainContent>
     <MainContent 
@@ -22,6 +22,7 @@
       title="Выходные в горах"
       sub-title="Прочувствуй энергию гор" 
       :modalData="modalData[1]"
+      :lazyLoad="true"
     >
       <!-- <template #image>
         <img src="/images/10.png" alt="Image 1" class="main-content__image">
@@ -39,7 +40,10 @@
         :modalData="modalData[2]"
       >
         <template #image>
-          <img src="/images/zgid.webp" alt="Image 1" class="main-content__image-small">
+          <img 
+            loading="lazy"
+            decoding="async"
+            src="/images/zgid.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
       <MainContent 
@@ -52,7 +56,11 @@
 
     >
       <template #image>
-        <img src="/images/11.png" alt="Image 1" class="main-content__image">
+        
+        <img             
+          loading="lazy"
+          decoding="async"
+          src="/images/11.png" alt="Image 1" class="main-content__image">
       </template>
     </MainContent>
     </div>
