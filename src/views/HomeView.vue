@@ -9,7 +9,7 @@
       :marginTop="-70"
       :modalData="modalData[0]"
       videoSrc="/videos/hero-background.webm"
-      videoPoster="/images/hero-poster.png"
+      videoPoster="/images/hero-poster.webp"
 
     >
     </MainContent>

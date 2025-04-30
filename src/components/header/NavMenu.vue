@@ -24,7 +24,7 @@ import MobileMenu from './MobileMenu.vue';
 import Header from './Header.vue';
 
 const name = ref('');
-const logo_dark = '/images/LogoA.png';  
+// const logo_dark = '/images/LogoA.png';  
 const logo = '/images/LogoAlong.png';  // Логотип
 const menuItems = [
   {
