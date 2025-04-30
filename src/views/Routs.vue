@@ -163,7 +163,7 @@ import NavMenu from '@/components/header/NavMenu.vue';
 import ContentTitle from '@/components/main-content/ContentTitle.vue';
 import TitleImage from '@/components/main-content/TitleImage.vue';
 import ContentSubTitle from '@/components/main-content/ContentSubTitle.vue';
-import VerticalSlider from '@/components/swiper/VerticalSlider.vue';
+// import VerticalSlider from '@/components/swiper/VerticalSlider.vue';
 import Discription from '@/components/main-content/Discription.vue';
 import MainContent from '@/components/main-content/MainContent.vue';
 import Booking from '@/components/main-content/Booking.vue';

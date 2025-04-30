@@ -17,7 +17,7 @@
           :buttonFontColor="black"
       :buttonColor="white"
       :marginTop="-110"
-      videoSrc="/videos/tours.mov"
+      videoSrc="/videos/tours.webm"
       videoPoster="/images/hero-poster.png"
       title="Выходные в горах"
       sub-title="Прочувствуй энергию гор" 
@@ -31,8 +31,7 @@
     <div class="home__table">
       
       <MainContent 
-        videoSrc="/videos/water.mov"
-        videoPoster="/images/hero-poster.png"
+
         :marginTop="235"
         :buttonColor="'#1D68F0'"
         title="Экскурсия "
@@ -40,7 +39,7 @@
         :modalData="modalData[2]"
       >
         <template #image>
-          <img src="/images/6.png" alt="Image 1" class="main-content__image-small">
+          <img src="/images/zgid.png" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
       <MainContent 
@@ -78,7 +77,7 @@
 <script setup>
 import { ref } from 'vue';
 import MainContent from '@/components/main-content/MainContent.vue';
-import Slider from '@/components/swiper/Slider.vue';
+// import Slider from '@/components/swiper/Slider.vue';
 import NavMenu from '@/components/header/NavMenu.vue';
 import Discription from '@/components/main-content/Discription.vue';
 import ReviewForm from '@/components/main-content/Review-form.vue';
@@ -278,10 +277,10 @@ const modalData = ref([
   margin-top: -70px;
 }
 
-.hero-section {
+/* .hero-section {
   
-  /* e   */
-}
+
+} */
 
 .main-content {
   margin-bottom: 20px; 

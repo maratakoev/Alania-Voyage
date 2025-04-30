@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <swiper
     
     :slidesPerView="'auto'"
@@ -38,6 +38,7 @@
     </swiper-slide>
   </swiper>
 </template>
+
 
 <script>
   // Import Swiper Vue.js components
@@ -85,4 +86,24 @@
     width: 700px;
     filter: brightness(80%) contrast(100%); /* Уменьшаем яркость */
   }
+</style> -->
+<template>
+  <div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const name = ref('');
+
+// Define methods here if needed
+
+</script>
+
+<style scoped>
+html, body {
+  margin: 0;
+  padding: 0;
+}
 </style>
