@@ -18,11 +18,11 @@
       :buttonColor="white"
       :marginTop="-110"
       videoSrc="/videos/tours.webm"
-      videoPoster="/images/hero-poster.png"
+      videoPoster="/images/hero-poster.webp"
       title="Выходные в горах"
       sub-title="Прочувствуй энергию гор" 
       :modalData="modalData[1]"
-      :lazyLoad="true"
+      :lazyLoad="false"
     >
       <!-- <template #image>
         <img src="/images/10.png" alt="Image 1" class="main-content__image">

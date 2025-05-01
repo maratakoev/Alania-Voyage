@@ -12,7 +12,7 @@
         :poster="shouldLoadPoster ? videoPoster : ''"
         preload="none"
       >
-        <source :src="videoSrc" type="video/mp4">
+        <source :src="videoSrc" type="video/webm">
         Ваш браузер не поддерживает видео тег.
       </video>
       <div v-if="videoSrc" class="video-overlay"></div>
