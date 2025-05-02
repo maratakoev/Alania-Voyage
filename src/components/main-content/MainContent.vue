@@ -18,10 +18,56 @@
       <div v-if="videoSrc" class="video-overlay"></div>
 
     </div>
-
     <div class="main-content__content" :style="{ marginTop: marginTop + 'px' }">
+      
+      <!-- <div v-if="difficulty" class="difficulty-badge" :class="difficultyClass">
+        {{ difficulty }}
+      </div> -->
+
       <h2 class="main-content__title">{{ title }}</h2>
       <h3 class="main-content__subtitle"> {{subTitle}}</h3>
+      
+
+
+
+
+      <!-- <p v-if="shortDescription" class="short-description">
+        {{ shortDescription }}
+      </p> -->
+      <div v-if="rating" class="tour-meta">
+  <div class="meta-item">
+    <!-- Звезда (рейтинг) -->
+    <span class="icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+      </svg>
+    </span>
+    <span>{{ rating }} ({{ reviewCount }} отзывов)</span>
+  </div>
+  
+  <div v-if="duration" class="meta-item">
+    <!-- Часы (длительность) -->
+    <span class="icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-.5-13H12v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+      </svg>
+    </span>
+    <span>{{ duration }}</span>
+  </div>
+  
+  <div v-if="distance" class="meta-item">
+    <!-- Расстояние -->
+    <span class="icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+    </span>
+    <span>{{ distance }}</span>
+  </div>
+</div>
+      <div v-if="price" class="price-badge">
+        Цена {{ price }} ₽ / до 4 чел.
+      </div>
       <div class="buttons">
         <btn-one 
         buttonText="Узнать больше"
@@ -30,10 +76,11 @@
         @click="openModal"
         />
         <btn-second
-        buttonText="Все включено"
+        :buttonText="ButtonSecText"
         :buttonBgColor="buttonColor" 
         />
       </div> 
+
     </div>
 
     <Modal
@@ -55,8 +102,86 @@ import BtnOne from '../buttons/BtnOne.vue';
 import BtnSecond from '../buttons/BtnSecond.vue';
 import Modal from '../Modal.vue'; // путь укажи, как у тебя в проекте
 
+// import StarIcon from '../icons/StarIcon.vue';
+// import ClockIcon from '../icons/ClockIcon.vue';
+// import RouteIcon from '../icons/RouteIcon.vue';
+
+
+const props = defineProps({
+  lazyLoad: { type: Boolean, default: true },
+  title: String,
+  subTitle: String,
+  marginTop: { type: Number, default: 70 },
+  buttonColor: String,
+  buttonFontColor: String,
+  videoSrc: String,
+  videoPoster: String,
+  modalData: Object,
+  ButtonSecText: String,
+
+  shortDescription: String,
+  price: Number,
+  duration: String,
+  distance: String,
+  rating: {
+    type: Number,
+    default: ''
+  },
+  reviewCount: {
+    type: Number,
+    default: 0
+  },
+  // difficulty: {
+  //   type: String,
+  //   default: '',
+  //   validator: (value) => !value || ['Легкий', 'Средний', 'Сложный', 'Средней сложности'].includes(value)
+  // },
+  modalData: {
+    type: Object,
+    required: true,
+    default: () => ({
+      title: '',
+      content: '',
+      button1Text: 'Забронировать',
+      button2Text: 'Закрыть',
+      button1BgColor: '#1D68F0',
+      button2BgColor: '#f44336',
+      button1FontColor: '#fff',
+      button2FontColor: '#fff',
+    })
+  },
+
+  routeDetails: {
+    type: Array,
+    default: () => []
+  },
+  includes: {
+    type: Array,
+    default: () => []
+  }
+
+
+
+});
+
+// const difficultyClass = computed(() => {
+//   if (!props.difficulty) return '';
+  
+//   const lower = props.difficulty.toLowerCase();
+//   if (lower.includes('легк')) return 'difficulty-легкий';
+//   if (lower.includes('средн')) return 'difficulty-средней_сложности';
+//   if (lower.includes('сложн')) return 'difficulty-сложный';
+//   return '';
+// });
+
 
 const isModalOpen = ref(false);
+
+const container = ref(null);
+const shouldLoadVideo = ref(!props.lazyLoad);
+const shouldLoadPoster = ref(!props.lazyLoad);
+const observer = ref(null);
+
 
 function openModal() {
   isModalOpen.value = true;
@@ -81,24 +206,19 @@ function onButton2Click() {
 }
 
 
-const props = defineProps({
-  lazyLoad: { type: Boolean, default: true },
-  title: String,
-  subTitle: String,
-  marginTop: { type: Number, default: 70 },
-  buttonColor: String,
-  buttonFontColor: String,
-  videoSrc: String,
-  videoPoster: String,
-  modalData: Object
-});
-
-const container = ref(null);
 
 
-const shouldLoadVideo = ref(!props.lazyLoad);
-const shouldLoadPoster = ref(!props.lazyLoad);
-const observer = ref(null);;
+// Методы
+// const openModal = () => {
+//   isModalOpen.value = true;
+// };
+
+// const closeModal = () => {
+//   isModalOpen.value = false;
+// };
+
+
+
 onMounted(() => {
   if (props.lazyLoad && container.value) {
     observer.value = new IntersectionObserver((entries) => {
@@ -121,6 +241,25 @@ onMounted(() => {
 onBeforeUnmount(() => {
   observer.value?.disconnect();
 });
+
+// Логика модального окна
+
+// const openModal = () => {
+//   isModalOpen.value = true;
+// };
+
+// const closeModal = () => {
+//   isModalOpen.value = false;
+// };
+
+// const onButton1Click = () => {
+//   console.log('Бронирование экскурсии');
+//   closeModal();
+// };
+
+// const onButton2Click = () => {
+//   closeModal();
+// };
 </script>
 
 <style scoped>
@@ -205,6 +344,49 @@ onBeforeUnmount(() => {
   font-size: 28px;
 }
 
+.tour-meta {
+  display: flex;
+  gap: 16px; /* Отступ между блоками */
+  flex-wrap: wrap;
+  color: #ffffff; /* Серый цвет текста как в iOS */
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Отступ иконка-текст */
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 174, 0, 0.811); /* Серый iOS для иконок */
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+.price-badge {
+  background: rgba(255, 174, 0, 0.811);
+  color: #474201;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.short-description {
+  color: white;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+
 .buttons {
   position: relative;
   display: flex;
@@ -228,6 +410,31 @@ onBeforeUnmount(() => {
   padding: 20px;
   box-sizing: border-box;
 }
+
+
+.difficulty-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.difficulty-легкий {
+  background: #4CAF50;
+}
+
+.difficulty-средней {
+  background: #FF9800;
+}
+
+.difficulty-сложный {
+  background: #F44336;
+}
+
 
 .main-content__modal-content {
   background: white;

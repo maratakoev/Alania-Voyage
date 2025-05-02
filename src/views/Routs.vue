@@ -22,6 +22,15 @@
       title="Древние тропы"
       sub-title="Ближе к небу, ближе к легендам"
       :marginTop="-150"
+      :price="14000"
+      duration="5 часов"
+      distance="120 км"
+      :rating="5"
+      :reviewCount="12"
+      :modalData="modalData"
+      :ButtonSecText="ButtonSecText"
+      :buttonColor="'white'"
+      :buttonFontColor="'black'"
     >
       <template #image>
         <img 
@@ -36,10 +45,18 @@
         title="Высота 1800"
         sub-title="От Кармадона до Даргавса"
         :marginTop="200"
-
+        :ButtonSecText="ButtonSecText"
         :buttonFontColor="'black'"
         :buttonColor="'white'"
-      >
+        :price="11000"
+        duration="3,5 часа"
+        distance="90 км"
+        :rating="4.5"
+        :reviewCount="7"
+        difficulty="Средний"
+        shortDescription="Увлекательная экскурсия по живописным горным тропам с профессиональным гидом"
+        :modalData="modalData"
+        >
         <template #image>
           <img 
           loading="lazy"
@@ -51,6 +68,13 @@
         title="Insta-марафон"
         sub-title="ТОП-5 локаций для фото"
         :marginTop="200"
+        :price="18000"
+        duration="5 часов"
+        distance="150км"
+        :rating="5"
+        :reviewCount="10"
+        :modalData="modalData"
+        :ButtonSecText="ButtonSecText"
         :buttonColor="'white'"
         :buttonFontColor="'black'"
 
@@ -67,9 +91,17 @@
       <MainContent 
         title="Верхний Мизур"
         sub-title="Почувствуй свободу мысли"
-        :buttonFontColor="'black'"
-        :buttonColor="'white'"
+
         :marginTop="-80"
+        :price="15000"
+      duration="5 часа"
+        distance="190 км"
+        :rating="4.5"
+        :reviewCount="3"
+        :modalData="modalData"
+        :ButtonSecText="ButtonSecText"
+        :buttonColor="'white'"
+        :buttonFontColor="'black'"
 
       >
         <template #image>
@@ -83,6 +115,15 @@
         title="Лавочка счастья"
         sub-title="Счастье не за горами, оно в горах"
         :marginTop="50"
+        :price="17000"
+      duration="4 часа"
+        distance="140 км"
+        :rating="5"
+        :reviewCount="11"
+        :modalData="modalData"
+        :ButtonSecText="ButtonSecText"
+        :buttonColor="'white'"
+        :buttonFontColor="'black'"
       >
         <template #image>
           <img 
@@ -99,6 +140,13 @@
         :buttonFontColor="'black'"
         :buttonColor="'white'"
         :marginTop="190"
+        :price="15000"
+      duration="5 часов"
+        distance="210 км"
+        :rating="4.9"
+        :reviewCount="2"
+        :modalData="modalData"
+        :ButtonSecText="ButtonSecText"
 
       >
         <template #image>
@@ -114,6 +162,16 @@
         :marginTop="190"
         videoSrc="/videos/zgid.webm"
         videoPoster="/images/zgid-poster.webp"
+        :price="18000"
+      duration="7 часов"
+        distance="220 км"
+        :rating="5"
+        :reviewCount="9"
+        :modalData="modalData"
+        :ButtonSecText="ButtonSecText"
+        :buttonColor="'white'"
+        :buttonFontColor="'black'"
+
       >
         <!-- <template #image>
           <img src="/videos/zgid.mov" alt="Image 1" class="main-content__image-small">
@@ -121,52 +179,9 @@
       </MainContent> 
     </div>
     <div class="home__table">
-      <MainContent 
-        title="Кармадон и Даргавс"
-        sub-title="Это чуть дешевле"
-        :buttonFontColor="'black'"
-        :buttonColor="'white'"
-        :marginTop="190"
 
-      >
-        <template #image>
-          <img 
-          loading="lazy"
-          decoding="async"
-          src="/images/karmadon-darg.webp" alt="Image 1" class="main-content__image">
-        </template>
-      </MainContent>
-      <MainContent 
-        title="Военно-грузинская дорога"
-        sub-title="Дарьяльские ворота"
-        :marginTop="-190"
 
-      >
-        <template #image>
-          <img 
-          loading="lazy"
-          decoding="async"
-          src="/images/darial.webp" alt="Image 1" class="main-content__image-small">
-        </template>
-      </MainContent> 
-    </div>
-    <div class="home__table">
-      <MainContent 
-        title="Горная Дигория"
-        sub-title="До водопада Жемчужина по эко тропе"
-        :buttonFontColor="'black'"
-        :buttonColor="'white'"
-        :marginTop="-270"
-
-      >
-        <template #image>
-          <img 
-          loading="lazy"
-          decoding="async"
-          src="/images/zadalesk.webp" alt="Image 1" class="main-content__image">
-        </template>
-      </MainContent>
-      <MainContent 
+      <!-- <MainContent 
         title="По долине реки Ардон"
         sub-title="Самая крупная гэс республики"
         :marginTop="-250"
@@ -178,6 +193,76 @@
           loading="lazy"
           decoding="async"
           src="/images/alagir-ardon.webp" alt="Image 1" class="main-content__image-small">
+        </template>
+      </MainContent>  -->
+      <!-- <MainContent 
+        title="Кармадон и Даргавс"
+        sub-title="Это чуть дешевле"
+        :buttonFontColor="'black'"
+        :buttonColor="'white'"
+        :marginTop="190"
+        :price="15000"
+      duration="4 часа"
+        distance="8 км"
+        :rating="4.9"
+        :reviewCount="124"
+        :modalData="modalData"
+        :ButtonSecText="ButtonSecText"
+
+
+      >
+        <template #image>
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/karmadon-darg.webp" alt="Image 1" class="main-content__image">
+        </template>
+      </MainContent> -->
+
+    </div>
+    <div class="home__table">
+      <MainContent 
+        title="Горная Дигория"
+        sub-title="До водопада Жемчужина по эко тропе"
+        :buttonFontColor="'black'"
+        :buttonColor="'white'"
+        :marginTop="-270"
+        :price="18000"
+      duration="10 часов"
+        distance="275 км"
+        :rating="5"
+        :reviewCount="8"
+        :modalData="modalData"
+        :ButtonSecText="ButtonSecText"
+
+
+      >
+        <template #image>
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/zadalesk.webp" alt="Image 1" class="main-content__image">
+        </template>
+      </MainContent>
+      <MainContent 
+        title="Военно-грузинская дорога"
+        sub-title="Дарьяльские ворота"
+        :marginTop="-190"
+        :buttonFontColor="'black'"
+        :buttonColor="'white'"
+        :price="11000"
+      duration="3 часа"
+        distance="85 км"
+        :rating="4.5"
+        :reviewCount="2"
+        :modalData="modalData"
+        :ButtonSecText="ButtonSecText"
+      >
+        <template #image>
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/darial.webp" alt="Image 1" class="main-content__image-small">
         </template>
       </MainContent> 
     </div>
@@ -203,7 +288,7 @@ import FAQ from '@/components/main-content/FAQ.vue';
 const contentTitle = 'Экскурсии';
 const contentTitleDiscription = 'Увидеть своими глазами.';
 const contentSubTitle = 'Выбери маршрут';
-
+const ButtonSecText = 'Забронировать'
 const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
 
 const article = `
