@@ -31,11 +31,13 @@ defineProps({
   cursor: pointer;
   transition: transform 0.3s ease;
   letter-spacing: 1.1px;
+  -webkit-tap-highlight-color: transparent; /* Для мобильных устройств */
+
 
 }
 
 .transparent-button:hover {
-  background-color: black;
+  /* background-color: black; */
   transform: scale(1.1);
   color: white;
 

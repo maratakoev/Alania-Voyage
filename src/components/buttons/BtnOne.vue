@@ -33,6 +33,8 @@ defineProps({
   cursor: pointer;
   transition: transform 0.3s ease;
   letter-spacing: 1.1px;
+  -webkit-tap-highlight-color: transparent; /* Для мобильных устройств */
+
 
 }
 

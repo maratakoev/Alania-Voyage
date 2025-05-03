@@ -11,6 +11,7 @@
       videoSrc="/videos/hero-background.webm"
       videoPoster="/images/hero-poster.webp"
       :lazyLoad="false"
+      :ButtonSecText="ButtonSecText"
     >
     </MainContent>
     <MainContent 
@@ -23,6 +24,8 @@
       sub-title="Прочувствуй энергию гор" 
       :modalData="modalData[1]"
       :lazyLoad="false"
+      :ButtonSecText="ButtonSecText"
+
     >
       <!-- <template #image>
         <img src="/images/10.png" alt="Image 1" class="main-content__image">
@@ -38,6 +41,8 @@
         title="Экскурсия "
         sub-title="С комфортом на внедорожнике"
         :modalData="modalData[2]"
+        :ButtonSecText="ButtonSecText"
+
       >
         <template #image>
           <img 
@@ -52,6 +57,8 @@
       :buttonColor="'#1D68F0'"
       :modalData="modalData[3]"
       :marginTop="-235"
+      :ButtonSecText="ButtonSecText"
+
 
 
     >
@@ -96,6 +103,8 @@ import Trust from '@/components/main-content/Trust.vue';
 import TopSection from '@/components/main-content/TopSection.vue';
 import FAQ from '@/components/main-content/FAQ.vue';
 import Footer from '@/components/main-content/Footer.vue';
+
+const ButtonSecText = 'Забронировать'
 
 const black = '#000000'
 const white = '#fff'

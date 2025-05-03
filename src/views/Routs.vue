@@ -161,9 +161,8 @@
       <MainContent 
         title="Згидский перевал"
         sub-title="Выше облаков на внедорожнике"
-        :marginTop="190"
-        videoSrc="/videos/zgid.webm"
-        videoPoster="/images/zgid-poster.webp"
+        :marginTop="170"
+
         :price="18000"
       duration="7 часов"
         distance="220 км"
@@ -175,9 +174,12 @@
         :buttonFontColor="'black'"
 
       >
-        <!-- <template #image>
-          <img src="/videos/zgid.mov" alt="Image 1" class="main-content__image-small">
-        </template> -->
+      <template #image>
+          <img 
+          loading="lazy"
+          decoding="async"
+          src="/images/zgid-poster.webp" alt="Image 1" class="main-content__image">
+        </template>
       </MainContent> 
     </div>
     <div class="home__table">
