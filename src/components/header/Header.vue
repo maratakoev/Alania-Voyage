@@ -178,8 +178,8 @@ const getItemStyle = (index) => ({
 }
 
 .header__logo {
-  width: 130px;
-  backdrop-filter: blur(25px);
+  width: 50px;
+  /* backdrop-filter: blur(25px); */
   border-radius: 8px;
   /* border: 2px solid rgb(214, 165, 83); */
   cursor: pointer;

@@ -25,7 +25,7 @@ import Header from './Header.vue';
 
 const name = ref('');
 // const logo_dark = '/images/LogoA.png';  
-const logo = '/images/LogoAlong.png';  // Логотип
+const logo = '/images/logo.png';  // Логотип
 const menuItems = [
   {
     label: 'Экскурсии',
