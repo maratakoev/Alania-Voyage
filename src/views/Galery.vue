@@ -2,25 +2,139 @@
   <div class="gallery">
     <NavMenu class="nav" />
     <Content-title :title="contentTitle" :discription="contentTitleDiscription" class="content-title"/>
-    <Title-image :imageSrc="imageSrc"></Title-image>
-    
-    <div class="gallery__container">
-      <div class="gallery__grid">
-        <div 
-          v-for="(item, index) in galleryItems" 
-          :key="index" 
-          class="gallery__item"
-          @click="openModal(item)"
-        >
-          <img :src="item.image" :alt="item.title" class="gallery__image">
-          <div class="gallery__overlay">
-            <h3 class="gallery__title">{{ item.title }}</h3>
-            <p class="gallery__subtitle">{{ item.subtitle }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <MainContent 
+      id="mountains"
+      class="home__container"
+      title="Выходные в горах"
+      sub-title="Идеально для перезагрузки"
+      :marginTop="130"
+      :ButtonSecText="ButtonSecText"
+      :modalData="modalData[0]"
+      :rating="5"
+      :reviewCount="30"
+      :price="12000"
 
+
+
+    >
+      <template #image>
+        <img src="/images/complecs.webp" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
+    <MainContent 
+      id="mountains"
+      class="home__container"
+      title="Алания-лайт:"
+      sub-title="Северная Осетия за 72 часа "
+      :marginTop="130"
+      :ButtonSecText="ButtonSecText"
+      :modalData="modalData[1]"
+      :rating="5"
+      :reviewCount="30"
+      :price="12000"
+
+
+
+    >
+      <template #image>
+        <img src="/images/complecs2.webp" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
+    <MainContent 
+      id="mountains"
+      class="home__container"
+      title="Гастрономический бунт:"
+      sub-title="От пирогов до горного мёда"
+      :marginTop="130"
+      :ButtonSecText="ButtonSecText"
+      :modalData="modalData[2]"
+      :rating="5"
+      :reviewCount="30"
+      :price="12000"
+
+
+
+    >
+      <template #image>
+        <img src="/images/hat.webp" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
+    <MainContent 
+      id="mountains"
+      class="home__container"
+      title="Фиагдон"
+      sub-title="Панорамный коттедж"
+      :marginTop="130"
+      :ButtonSecText="ButtonSecText"
+      :modalData="modalData[3]"
+      :rating="5"
+      :reviewCount="30"
+      :price="12000"
+
+
+
+    >
+      <template #image>
+        <img src="/images/pair.webp" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
+    <MainContent 
+      id="mountains"
+      class="home__container"
+      title="Фиагдон"
+      sub-title="Панорамный коттедж"
+      :marginTop="-250"
+      :ButtonSecText="ButtonSecText"
+      :modalData="modalData[4]"
+      :rating="5"
+      :reviewCount="30"
+      :price="12000"
+
+
+
+    >
+      <template #image>
+        <img src="/images/pairWedding.webp" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
+    <MainContent 
+      id="mountains"
+      class="home__container"
+      title="Фиагдон"
+      sub-title="Панорамный коттедж"
+      :marginTop="130"
+      :ButtonSecText="ButtonSecText"
+      :modalData="modalData[5]"
+      :rating="5"
+      :reviewCount="30"
+      :price="12000"
+
+
+
+    >
+      <template #image>
+        <img src="/images/ler.webp" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
+    <MainContent 
+      id="mountains"
+      class="home__container"
+      title="Фиагдон"
+      sub-title="Панорамный коттедж"
+      :marginTop="130"
+      :ButtonSecText="ButtonSecText"
+      :modalData="modalData[6]"
+      :rating="5"
+      :reviewCount="30"
+      :price="12000"
+
+
+
+    >
+      <template #image>
+        <img src="/images/lc.webp" alt="Image 1" class="main-content__image">
+      </template>
+    </MainContent>
     <!-- <div class="slider">
       <Slider />
     </div> -->
@@ -30,17 +144,7 @@
     <FAQ></FAQ>
     <Footer></Footer>
     <!-- Модальное окно -->
-    <div v-if="isModalOpen" class="modal" @click.self="closeModal">
-      <div class="modal__content">
-        <button class="modal__close" @click="closeModal">×</button>
-        <img :src="currentItem.image" :alt="currentItem.title" class="modal__image">
-        <div class="modal__text">
-          <h2>{{ currentItem.title }}</h2>
-          <h3>{{ currentItem.subtitle }}</h3>
-          <p>{{ currentItem.description }}</p>
-        </div>
-      </div>
-    </div>
+
   </div>
 </template>
 
@@ -58,77 +162,119 @@ import FAQ from '@/components/main-content/FAQ.vue';
 // import PreFooter from '@/components/main-content/PreFooter.vue';
 const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
 
-const contentTitle = 'Беззаботно';
-const contentTitleDiscription = 'Наслаждаться отдыхом';
+const contentTitle = 'Все включено';
+const contentTitleDiscription = 'Доверьте нам организацию отдыха';
 
 
 const isModalOpen = ref(false);
 const currentItem = ref({});
 
+const ButtonSecText = 'Забронировать'
 
-const galleryItems = ref([
-  {
-    image: '/images/lavochka.webp',
-    title: 'Экскурсии',
-    subtitle: 'Оказаться над облаками',
-    description: 'Незабываемые экскурсии по живописным маршрутам Северного Кавказа с профессиональными гидами.'
-  },
-  {
-    image: '/images/lavochka.webp',
-    title: 'Проживание',
-    subtitle: 'Лучшие виды из окна',
-    description: 'Уютные гостевые дома с панорамными видами на горные хребты и долины.'
-  },
-  {
-    image: '/images/lavochka.webp',
-    title: 'Зругское озеро',
-    subtitle: 'Жемчужина Осетии',
-    description: 'Кристально чистое горное озеро на высоте 2000 метров над уровнем моря.'
-  },
-  {
-    image: '/images/lavochka.webp',
-    title: 'Водопад',
-    subtitle: 'Самый высокий в Европе',
-    description: 'Величественный водопад высотой более 600 метров в сердце Кавказских гор.'
-  },
-  {
-    image: '/images/lavochka.webp',
-    title: 'Горные реки',
-    subtitle: 'Невероятно красивого цвета',
-    description: 'Ледниковые реки с бирюзовой водой, прорезающие горные ущелья.'
-  },
-  {
-    image: '/images/lavochka.webp',
-    title: 'Панорамы',
-    subtitle: 'Которые сложно забыть',
-    description: 'Захватывающие дух виды на горные массивы с высоты птичьего полета.'
-  },
-  {
-    image: '/images/lavochka.webp',
-    title: 'Вершины',
-    subtitle: 'На расстоянии вытянутой руки',
-    description: 'Возможность подняться на вершины, доступные только опытным альпинистам.'
-  }
-]);
 
-const article = ref(`
-  <h2>Условия предоставления туристических услуг</h2>
-  <p><strong>1. Общие условия</strong></p>
-  <p>Экскурсии на внедорожниках по горной местности и услуги проживания предоставляются в соответствии с выбранной программой. Фактический маршрут может изменяться в зависимости от погодных условий, состояния дорог и других факторов.</p>
-  <p><strong>2. Ответственность за безопасность</strong></p>
-  <p>Участие в экскурсиях осуществляется на добровольной основе. Гости принимают на себя полную ответственность за свою безопасность, здоровье и сохранность личных вещей во время поездки. Организаторы не несут ответственности за травмы, полученные в ходе экскурсии, а также за повреждение или утерю личного имущества.</p>
-  <p><strong>3. Предоплата и отмена бронирования</strong></p>
-  <p>Для подтверждения бронирования требуется предоплата. В случае отказа от участия предоплата не возвращается. Если поездка отменяется организатором (например, из-за погодных условий), возможен перенос даты или возврат средств.</p>
-  <p><strong>4. Транспорт и условия проживания</strong></p>
-  <p>Все автомобили проходят регулярное техническое обслуживание, однако из-за сложного рельефа возможны форс-мажорные обстоятельства, такие как задержки или изменение маршрута. Проживание организуется в соответствии с выбранным тарифом, условия проживания могут отличаться в зависимости от локации.</p>
-  <p><strong>5. Особые условия</strong></p>
-  <ul>
-    <li>Организатор оставляет за собой право отказать в участии лицам в состоянии алкогольного или наркотического опьянения.</li>
-    <li>Туристы должны соблюдать правила поведения в горах и уважать природу.</li>
-    <li>В случае нарушения правил и создания опасности для группы организатор вправе прекратить участие гостя без возврата средств.</li>
-  </ul>
-  <p>Подробности маршрутов, условий проживания и актуальной информации уточняйте перед бронированием. Бронирование экскурсии означает согласие с указанными условиями.</p>
-`);
+const modalData = ref([
+{
+  "title": "Точка тишины",
+  "content": `
+    <p><strong>«Точка тишины» — частный коттедж на первой видовой линии, где каждый рассвет — как произведение искусства.</strong></p>
+
+    <p>Расположен на возвышенности в Фиагдоне. Первая видовая линия. Высота, на которой кончаются дороги и начинается созерцание. 
+    Панорамные окна от пола до потолка открывают захватывающий вид на кавказские вершины высотой до 3500 метров. Здесь небо и горы — главные герои вашего утра.</p>
+
+    <p>Пространство идеально для двоих: уютная спальня с двуспальной кроватью и студия из которой открывается вид, от которого невозможно оторваться.</p>
+
+    <p><strong>Это не просто коттедж — это ваше личное место силы на краю мира.</strong></p>
+  `,
+  "button1Text": "Забронировать"
+},
+{
+  "title": "Точка тишины",
+  "content": `
+    <p><strong>«Точка тишины» — частный коттедж на первой видовой линии, где каждый рассвет — как произведение искусства.</strong></p>
+
+    <p>Расположен на возвышенности в Фиагдоне. Первая видовая линия. Высота, на которой кончаются дороги и начинается созерцание. 
+    Панорамные окна от пола до потолка открывают захватывающий вид на кавказские вершины высотой до 3500 метров. Здесь небо и горы — главные герои вашего утра.</p>
+
+    <p>Пространство идеально для двоих: уютная спальня с двуспальной кроватью и студия из которой открывается вид, от которого невозможно оторваться.</p>
+
+    <p><strong>Это не просто коттедж — это ваше личное место силы на краю мира.</strong></p>
+  `,
+  "button1Text": "Забронировать"
+},
+{
+  "title": "Точка тишины",
+  "content": `
+    <p><strong>«Точка тишины» — частный коттедж на первой видовой линии, где каждый рассвет — как произведение искусства.</strong></p>
+
+    <p>Расположен на возвышенности в Фиагдоне. Первая видовая линия. Высота, на которой кончаются дороги и начинается созерцание. 
+    Панорамные окна от пола до потолка открывают захватывающий вид на кавказские вершины высотой до 3500 метров. Здесь небо и горы — главные герои вашего утра.</p>
+
+    <p>Пространство идеально для двоих: уютная спальня с двуспальной кроватью и студия из которой открывается вид, от которого невозможно оторваться.</p>
+
+    <p><strong>Это не просто коттедж — это ваше личное место силы на краю мира.</strong></p>
+  `,
+  "button1Text": "Забронировать"
+},
+{
+  "title": "Точка тишины",
+  "content": `
+    <p><strong>«Точка тишины» — частный коттедж на первой видовой линии, где каждый рассвет — как произведение искусства.</strong></p>
+
+    <p>Расположен на возвышенности в Фиагдоне. Первая видовая линия. Высота, на которой кончаются дороги и начинается созерцание. 
+    Панорамные окна от пола до потолка открывают захватывающий вид на кавказские вершины высотой до 3500 метров. Здесь небо и горы — главные герои вашего утра.</p>
+
+    <p>Пространство идеально для двоих: уютная спальня с двуспальной кроватью и студия из которой открывается вид, от которого невозможно оторваться.</p>
+
+    <p><strong>Это не просто коттедж — это ваше личное место силы на краю мира.</strong></p>
+  `,
+  "button1Text": "Забронировать"
+},
+{
+  "title": "Точка тишины",
+  "content": `
+    <p><strong>«Точка тишины» — частный коттедж на первой видовой линии, где каждый рассвет — как произведение искусства.</strong></p>
+
+    <p>Расположен на возвышенности в Фиагдоне. Первая видовая линия. Высота, на которой кончаются дороги и начинается созерцание. 
+    Панорамные окна от пола до потолка открывают захватывающий вид на кавказские вершины высотой до 3500 метров. Здесь небо и горы — главные герои вашего утра.</p>
+
+    <p>Пространство идеально для двоих: уютная спальня с двуспальной кроватью и студия из которой открывается вид, от которого невозможно оторваться.</p>
+
+    <p><strong>Это не просто коттедж — это ваше личное место силы на краю мира.</strong></p>
+  `,
+  "button1Text": "Забронировать"
+},
+{
+  "title": "Точка тишины",
+  "content": `
+    <p><strong>«Точка тишины» — частный коттедж на первой видовой линии, где каждый рассвет — как произведение искусства.</strong></p>
+
+    <p>Расположен на возвышенности в Фиагдоне. Первая видовая линия. Высота, на которой кончаются дороги и начинается созерцание. 
+    Панорамные окна от пола до потолка открывают захватывающий вид на кавказские вершины высотой до 3500 метров. Здесь небо и горы — главные герои вашего утра.</p>
+
+    <p>Пространство идеально для двоих: уютная спальня с двуспальной кроватью и студия из которой открывается вид, от которого невозможно оторваться.</p>
+
+    <p><strong>Это не просто коттедж — это ваше личное место силы на краю мира.</strong></p>
+  `,
+  "button1Text": "Забронировать"
+},
+{
+  "title": "Точка тишины",
+  "content": `
+    <p><strong>«Точка тишины» — частный коттедж на первой видовой линии, где каждый рассвет — как произведение искусства.</strong></p>
+
+    <p>Расположен на возвышенности в Фиагдоне. Первая видовая линия. Высота, на которой кончаются дороги и начинается созерцание. 
+    Панорамные окна от пола до потолка открывают захватывающий вид на кавказские вершины высотой до 3500 метров. Здесь небо и горы — главные герои вашего утра.</p>
+
+    <p>Пространство идеально для двоих: уютная спальня с двуспальной кроватью и студия из которой открывается вид, от которого невозможно оторваться.</p>
+
+    <p><strong>Это не просто коттедж — это ваше личное место силы на краю мира.</strong></p>
+  `,
+  "button1Text": "Забронировать"
+}
+
+
+])
+
 
 const openModal = (item) => {
   currentItem.value = item;
@@ -158,6 +304,17 @@ const closeModal = () => {
 /* .content-title {
   padding-top: 70px;
 } */
+
+.main-content__image {
+  width: 100%;
+  height: 580px;
+  object-fit: cover;
+  filter: brightness(70%) contrast(100%);
+}
+
+.main-content {
+  margin-bottom: 20px; 
+}
 
 .gallery__container {
   max-width: 1400px;
