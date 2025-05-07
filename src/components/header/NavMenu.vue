@@ -69,13 +69,14 @@ const menuItems = [
       { label: 'Фотографии', route: '/galery#photos' }
     ], 
   },
-  { label: 'О нас', 
+  { label: 'Контакты', 
     route: '/about', 
     submenu: [
         { label: 'Соц сети', route: '/about#social' },
         { label: 'Автопарк', route: '/about#fleet' }
     ], 
   },
+
 ];
 
   // Создаем переменную для состояния blur

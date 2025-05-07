@@ -48,6 +48,7 @@ const contentSubTitle = 'Увидеть своими глазами.';
   align-items: center;
   vertical-align: baseline;
   width: 100%; /* Добавляем */
+  box-sizing: border-box;
 
   
   

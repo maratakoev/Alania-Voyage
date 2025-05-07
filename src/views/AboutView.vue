@@ -8,6 +8,43 @@
     />
     <Title-image :imageSrc="imageSrc" />
 
+
+    <!-- Новый блок: Менеджер и контакты -->
+    <section class="manager-section" id="social">
+      <h2 class="section-title">Ваш персональный гид-координатор</h2>
+      <div class="manager-grid">
+        <div class="manager-card">
+          <div class="manager-photo">
+            <img :src="manager.photo" :alt="manager.name">
+          </div>
+          <div class="manager-info">
+            <h3>{{ manager.name }}</h3>
+            <p class="position">{{ manager.position }}</p>
+            <div class="manager-contacts">
+              <a v-for="(contact, index) in manager.contacts" 
+                 :key="index" 
+                 :href="contact.link" 
+                 class="contact-link">
+                <span class="icon">{{ contact.icon }}</span> {{ contact.text }}
+              </a>
+            </div>
+            <div class="social-links" >
+              <p>Следите за нашими путешествиями:</p>
+              <a v-for="(social, index) in manager.socials" 
+                 :key="index" 
+                 :href="social.link" 
+                 target="_blank">
+                <img :src="social.icon" :alt="social.name">
+              </a>
+            </div>
+          </div>
+          <div class="manager-bio">
+            <p>{{ manager.bio }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Philosophy Section -->
     <section class="philosophy-section">
       <h2 class="section-title">Наша философия</h2>
@@ -67,6 +104,24 @@ const contentTitle = 'Наша история';
 const contentTitleDiscription = 'началась в 2010г';
 const activeTab = ref(0);
 
+// Данные менеджера
+const manager = ref({
+  name: "Марат Акоев",
+  position: "Координатор приключений",
+  photo: new URL('/public/images/me.webp', import.meta.url).href,
+  bio: "Помогу организовать ваше идеальное путешествие по Кавказу. Лично знаю всех гидов и каждый маршрут. Отвечаю в течение 15 минут!",
+  contacts: [
+    { icon: "📞", text: "+7 (988) 835-72-27", link: "tel:+79888357227" },
+    { icon: "✉️", text: "m.akoev@yandex.ru", link: "mailto:m.akoev@yandex.ru" },
+    { icon: "💬", text: "Написать в WhatsApp", link: "https://wa.me/79888357227" }
+  ],
+  socials: [
+    { name: "Instagram", icon: "images/icons/inst.png", link: "https://www.instagram.com/marat_akoev" },
+    { name: "Telegram", icon: "images/icons/tg.png", link: "https://t.me/maratakoev" },
+    { name: "VK", icon: "images/icons/vk.png", link: "https://vk.com/marat_akoev" }
+  ]
+});
+
 // Данные для секций
 const philosophy = ref([
   { 
@@ -78,11 +133,6 @@ const philosophy = ref([
     emoji: '🛡️', 
     title: 'Безопасность прежде всего', 
     text: 'Сертифицированные гиды и проверенные маршруты' 
-  },
-  { 
-    emoji: '🤝', 
-    title: 'Ответственный подход', 
-    text: 'Поддерживаем локальные сообщества и экологию' 
   },
   { 
     emoji: '🧭', 
@@ -171,6 +221,97 @@ const tabs = ref([
   line-height: 1;
 }
 
+.manager-section {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+}
+
+.manager-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.manager-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  background: rgba(29, 104, 240, 0.05);
+  border-radius: 16px;
+  padding: 30px;
+  align-items: center;
+}
+
+.manager-photo img {
+  width: 100%;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border: 3px solid #1D68F0;
+}
+
+.manager-info h3 {
+  font-size: 1.5rem;
+  color: #1D68F0;
+  margin-bottom: 0.5rem;
+}
+
+.position {
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.manager-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-link:hover {
+  color: #1D68F0;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.social-links p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.social-links img {
+  width: 28px;
+  transition: transform 0.3s;
+}
+
+.social-links img:hover {
+  transform: scale(1.1);
+}
+
+.manager-bio {
+  grid-column: span 2;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  font-style: italic;
+}
+
+
+
 /* Principles Section */
 .principles-section {
   padding: 2rem 1rem 4rem;
@@ -238,6 +379,24 @@ const tabs = ref([
 }
 
 @media (max-width: 768px) {
+
+  .manager-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .manager-contacts {
+    align-items: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .manager-photo {
+    margin: 0 auto;
+    max-width: 150px;
+  }
   .philosophy-grid {
     grid-template-columns: 1fr;
     max-width: 500px;

@@ -78,6 +78,7 @@
         <btn-second
         :buttonText="ButtonSecText"
         :buttonBgColor="buttonColor" 
+        @click="openBookingModal"
         />
       </div> 
 
@@ -174,6 +175,15 @@ const props = defineProps({
 //   return '';
 // });
 
+const isBookingModal = ref (false);
+
+function openBookingModal () {
+  isBookingModal.value = true;
+}
+
+function closeBookingModal () {
+  isBookingModal.value = false
+}
 
 const isModalOpen = ref(false);
 

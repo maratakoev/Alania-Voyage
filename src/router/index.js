@@ -33,6 +33,33 @@ const routes = [
     // Добавление webpackChunkName для галереи
     component: () => import(/* webpackChunkName: "tours" */ '../views/Living.vue')
   },
+
+  {
+    path: '/PrivacyPolicy',
+    name: 'Privacy',
+    // Добавление webpackChunkName для галереи
+    component: () => import(/* webpackChunkName: "tours" */ '../views/PrivacyPolicy.vue')
+  },
+  {
+    path: '/Using',
+    name: 'Using',
+    // Добавление webpackChunkName для галереи
+    component: () => import(/* webpackChunkName: "tours" */ '../views/Using.vue')
+  },
+  {
+    path: '/Oferta',
+    name: 'Oferta',
+    // Добавление webpackChunkName для галереи
+    component: () => import(/* webpackChunkName: "tours" */ '../views/Oferta.vue')
+  },
+  {
+    path: '/FaqPage',
+    name: 'FaqPage',
+    // Добавление webpackChunkName для галереи
+    component: () => import(/* webpackChunkName: "tours" */ '../views/FaqPage.vue')
+  },
+
+
 ]
 
 const router = createRouter({
