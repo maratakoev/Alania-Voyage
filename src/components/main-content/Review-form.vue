@@ -289,7 +289,7 @@ const handleTouchEnd = (e) => {
 
 
 .reviews-container {
-  max-width: 950px;
+  max-width: 1075px;
   max-height: 1121px;
   margin: 0 auto;
   padding: 20px;

@@ -104,7 +104,7 @@ import TopSection from '@/components/main-content/TopSection.vue';
 import FAQ from '@/components/main-content/FAQ.vue';
 import Footer from '@/components/main-content/Footer.vue';
 
-const ButtonSecText = 'Забронировать'
+const ButtonSecText = 'Написать в чат'
 
 const black = '#000000'
 const white = '#fff'

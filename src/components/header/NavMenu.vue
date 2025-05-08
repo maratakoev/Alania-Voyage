@@ -1,7 +1,7 @@
 <template>
   <div class="nav-menu">
     <!-- Мобильное меню, которое будет отображаться только на маленьких экранах -->
-    <MobileMenu :logo="logo_dark" :menuItems="menuItems" @update:blurActive="handleBlurChange" class="mobile-menu" />
+    <MobileMenu :logo="logo" :menuItems="menuItems" @update:blurActive="handleBlurChange" class="mobile-menu" />
 
     <!-- Обычное меню, которое будет отображаться только на больших экранах -->
     <Header :logo="logo" :menuItems="menuItems" @update:blurActive="handleBlurChange" class="web-menu" />
@@ -73,7 +73,6 @@ const menuItems = [
     route: '/about', 
     submenu: [
         { label: 'Соц сети', route: '/about#social' },
-        { label: 'Автопарк', route: '/about#fleet' }
     ], 
   },
 

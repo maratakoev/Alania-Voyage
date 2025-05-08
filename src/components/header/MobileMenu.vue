@@ -5,7 +5,7 @@
         <router-link to="/">
           <transition name="fade">
 
-          <img :src="logo" 
+            <img :src="logo" 
               alt="Logo" 
               class="mobile-menu__img"
               @mouseenter="hideSubMenu" 

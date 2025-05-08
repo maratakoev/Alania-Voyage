@@ -22,18 +22,18 @@
             <p class="position">{{ manager.position }}</p>
             <div class="manager-contacts">
               <a v-for="(contact, index) in manager.contacts" 
-                 :key="index" 
-                 :href="contact.link" 
-                 class="contact-link">
+                :key="index" 
+                :href="contact.link" 
+                class="contact-link">
                 <span class="icon">{{ contact.icon }}</span> {{ contact.text }}
               </a>
             </div>
             <div class="social-links" >
               <p>Следите за нашими путешествиями:</p>
               <a v-for="(social, index) in manager.socials" 
-                 :key="index" 
-                 :href="social.link" 
-                 target="_blank">
+                :key="index" 
+                :href="social.link" 
+                target="_blank">
                 <img :src="social.icon" :alt="social.name">
               </a>
             </div>
@@ -172,6 +172,7 @@ const tabs = ref([
   position: sticky;
   top: 0;
   z-index: 100;
+  margin-top: -70px;
 }
 
 .section-title {
@@ -383,6 +384,9 @@ const tabs = ref([
   .manager-card {
     grid-template-columns: 1fr;
     text-align: center;
+    display: flex
+;
+    flex-direction: column;
   }
   
   .manager-contacts {

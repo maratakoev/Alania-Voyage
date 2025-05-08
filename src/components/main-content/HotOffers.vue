@@ -49,8 +49,12 @@ const bookOffer = (offer) => {
 
 <style scoped>
 .hot-offers {
-  padding: 60px 20px;
-  background: linear-gradient(to bottom, #fff 0%, #f8f9fa 100%);
+  max-width: 1064px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  padding: 60px 0px;
+  /* background: linear-gradient(to bottom, #fff 0%, #f8f9fa 100%); */
 }
 
 .section-title {

@@ -78,7 +78,9 @@
         <btn-second
         :buttonText="ButtonSecText"
         :buttonBgColor="buttonColor" 
-        @click="openBookingModal"
+        
+        telegramUrl="https://t.me/maratakoev"
+
         />
       </div> 
 
@@ -174,6 +176,10 @@ const props = defineProps({
 //   if (lower.includes('сложн')) return 'difficulty-сложный';
 //   return '';
 // });
+
+
+
+
 
 const isBookingModal = ref (false);
 

@@ -106,7 +106,7 @@ const openContactForm = () => {
 
 <style scoped>
 .faq-container {
-  max-width: 800px;
+  max-width: 1064px;
   margin: 0 auto;
   padding: 2rem;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;

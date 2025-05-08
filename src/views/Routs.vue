@@ -294,7 +294,7 @@ import FAQ from '@/components/main-content/FAQ.vue';
 const contentTitle = 'Экскурсии';
 const contentTitleDiscription = 'Увидеть своими глазами.';
 const contentSubTitle = 'Выбери маршрут';
-const ButtonSecText = 'Забронировать'
+const ButtonSecText = 'Написать в чат'
 const imageSrc = new URL('@/assets/titleImages/6.png', import.meta.url).href;
 
 const modalData = ref([

@@ -106,7 +106,7 @@ const trustItems = ref([
 }
 
 .container {
-  max-width: 72rem;
+  max-width: 1064px;
   margin: 0 auto;
 }
 

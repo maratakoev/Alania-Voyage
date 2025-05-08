@@ -1,17 +1,63 @@
 <template>
-  <button class="transparent-button" :style="{ border: '2px solid ' + buttonBgColor, color: buttonBgColor }">
-    {{ buttonText }}
+  <button 
+    class="transparent-button" 
+    :style="{ border: '2px solid ' + buttonBgColor, color: buttonBgColor }"
+    @click="handleClick">
+      {{ buttonText }}
+<!-- Кнопка с переходом в Telegram:
+vue
+<TransparentButton
+  buttonText="Наш Telegram"
+  buttonBgColor="#0088cc"
+  telegramUrl="https://t.me/username"
+/> -->
+
+<!-- Кнопка с кастомным обработчиком:
+vue
+<TransparentButton
+  buttonText="Открыть меню"
+  buttonBgColor="green"
+  :onClick="openMenu"
+/> -->
+
   </button>
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   buttonText: String,
   buttonBgColor: {
     type: String,
     default:  'black'
+  },
+  telegramUrl: {
+    type: String,
+    default: ''
+  },
+  onClick: {
+    type: Function,
+    default: null
   }
 });
+
+const handleClick = (event) => {
+  // 1. Если передан кастомный обработчик - вызываем его
+  if (props.onClick) {
+    props.onClick(event);
+    return;
+  }
+  
+  // 2. Если есть Telegram-ссылка - открываем её
+  if (props.telegramUrl) {
+    window.open(props.telegramUrl, '_blank'); // Исправлено '_blink' → '_blank'
+    return;
+  }
+  
+  // 3. Если ничего не передано - просто работает как кнопка
+  console.log('Кнопка нажата');
+};
+
+
 </script>
 
 <style scoped>

@@ -58,7 +58,7 @@ import { ref } from 'vue';
 const contentTitle = 'Проживание';
 const contentTitleDiscription = 'Сказочные панорамы';
 const contentSubTitle = 'Узнать подробнее';
-const ButtonSecText = 'Забронировать'
+const ButtonSecText = 'Написать в чат'
 
 
 const imageSrc = new URL('@/assets/titleImages/11.png', import.meta.url).href;

@@ -169,7 +169,7 @@ const contentTitleDiscription = 'Доверьте нам организацию 
 const isModalOpen = ref(false);
 const currentItem = ref({});
 
-const ButtonSecText = 'Забронировать'
+const ButtonSecText = 'Написать в чат'
 
 
 const modalData = ref([
